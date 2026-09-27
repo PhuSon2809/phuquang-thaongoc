@@ -1,0 +1,4254 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Wedding of Phú Quang & Thảo Ngọc • 28.09.2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ══════════════════════════════════════════════════════════════
+         LUXURY EDITORIAL WEDDING MAGAZINE DESIGN SYSTEM
+         Ivory Cream, Forest Olive & Warm Champagne Gold
+         ══════════════════════════════════════════════════════════════ */
+      :root {
+        --bg-ivory: #faf7f2;
+        --bg-card: #ffffff;
+        --text-charcoal: #2a2623;
+        --text-muted: #6b655f;
+        --green-olive: #274720;
+        --green-deep: #1a3316;
+        --gold-champagne: #b89558;
+        --gold-rule: #c5a365;
+        --red-crimson: #8c1d24;
+        --pink-heart: #e86a82;
+
+        --font-script: "Great Vibes", "Alex Brush", cursive;
+        --font-serif-display: "Playfair Display", "Prata", Georgia, serif;
+        --font-serif-body: "Cormorant Garamond", Georgia, serif;
+        --font-sans: "Montserrat", -apple-system, sans-serif;
+
+        --shadow-magazine: 0 25px 55px rgba(42, 38, 35, 0.14), 0 6px 18px rgba(42, 38, 35, 0.06);
+        --shadow-filmstrip: 0 25px 60px rgba(0, 0, 0, 0.16), 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-ivory);
+        overflow: hidden;
+        font-family: var(--font-sans);
+        color: var(--text-charcoal);
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* ── AMBIENT BASE WITH BOTANICAL SHADOW DAPPLE ── */
+      #ambient-canvas {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at 75% 20%, #fffdf9 0%, #faf6ee 50%, #f3ede2 100%);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Soft organic sunlit foliage shadow overlay */
+      #foliage-shadow {
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+            circle at 15% 85%,
+            rgba(60, 50, 40, 0.04) 0%,
+            transparent 60%
+          ),
+          radial-gradient(circle at 85% 15%, rgba(60, 50, 40, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 50% 50%, rgba(40, 70, 30, 0.02) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 2;
+        animation: swayLeaves 18s ease-in-out infinite alternate;
+      }
+
+      @keyframes swayLeaves {
+        0% {
+          transform: scale(1) translate(0, 0);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1.03) translate(-1.5%, 1%);
+          opacity: 1;
+        }
+      }
+
+      /* ── FLOATING CHAMPAGNE FAIRY PARTICLES ── */
+      #sparkle-canvas {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      /* ── CINEMATIC OPTICAL LIGHT LEAK TRANSITION ── */
+      #light-bloom {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 30;
+        opacity: 0;
+        background: radial-gradient(
+          circle at 60% 40%,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(250, 240, 215, 0.75) 40%,
+          rgba(225, 195, 140, 0.35) 70%,
+          transparent 90%
+        );
+        mix-blend-mode: normal;
+        will-change: opacity, transform;
+      }
+
+      /* ── STAGE & SLIDES ── */
+      #stage {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 10;
+        cursor: pointer;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transform: scale(0.975);
+        filter: blur(8px);
+        transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform, filter;
+        z-index: 1;
+      }
+
+      .slide.active {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: scale(1);
+        filter: blur(0px);
+        z-index: 2;
+      }
+
+      .slide.leaving {
+        opacity: 0;
+        visibility: visible;
+        pointer-events: none;
+        transform: scale(1.015);
+        filter: blur(3px);
+        z-index: 1;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: FULLSCREEN PHOTO (Album Slides)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-fullscreen {
+        position: absolute;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .ly-fullscreen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block;
+        transition: transform 4s cubic-bezier(0.25, 1, 0.5, 1);
+        transform: scale(1);
+      }
+      .slide.active .ly-fullscreen img {
+        transform: scale(1.07);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         EXACT LAYOUT: DUAL ANGLED FILMSTRIPS (1:1 USER REFERENCE)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-filmstrip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100vw;
+        height: 100vh;
+        padding: 0 3vw 0 5vw;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .filmstrip-left {
+        flex: 0.85;
+        max-width: 32vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+      }
+
+      .filmstrip-left .wedding-header-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .filmstrip-left .script-title {
+        font-family: var(--font-script);
+        font-size: clamp(26px, 2.8vw, 38px);
+        color: var(--green-olive);
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .filmstrip-left .script-title.red {
+        color: var(--red-crimson);
+      }
+
+      .filmstrip-left .wedding-line {
+        height: 1.5px;
+        background: var(--gold-rule);
+        flex: 1;
+        max-width: 120px;
+      }
+
+      .filmstrip-left .couple-names-block {
+        font-family: var(--font-serif-display);
+        font-size: clamp(28px, 3.2vw, 44px);
+        font-weight: 500;
+        color: var(--green-olive);
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+        margin: 14px 0 10px 0;
+      }
+
+      .filmstrip-left .couple-names-block.red {
+        color: var(--red-crimson);
+      }
+
+      .filmstrip-left .wedding-date-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .filmstrip-left .date-line {
+        width: 80px;
+        height: 1.5px;
+        background: var(--gold-rule);
+      }
+
+      .filmstrip-left .wedding-date {
+        font-family: var(--font-serif-display);
+        font-size: clamp(16px, 1.4vw, 20px);
+        color: var(--text-muted);
+        letter-spacing: 2px;
+      }
+
+      .filmstrip-left .wedding-header-row,
+      .filmstrip-left .couple-names-block,
+      .filmstrip-left .wedding-date-row {
+        position: relative;
+        z-index: 3;
+      }
+
+      /* The Right Dual Filmstrips Container - EXPANDED TO MAKE PHOTOS PROMINENT */
+      .filmstrip-right {
+        flex: 1.65;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 46px;
+        position: relative;
+        overflow: visible;
+      }
+
+      .strip-column {
+        width: clamp(290px, 24vw, 375px);
+        height: auto;
+        min-height: 125vh;
+        background: #ffffff;
+        padding: 14px 14px 18px 14px;
+        box-shadow: var(--shadow-filmstrip);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        flex-shrink: 0;
+      }
+
+      .strip-column.strip-left {
+        transform: rotate(-6.5deg) translateY(-2%);
+        animation: driftStrip1 14s ease-in-out infinite alternate;
+      }
+
+      .strip-column.strip-right {
+        transform: rotate(6.8deg) translateY(4%);
+        animation: driftStrip2 14s ease-in-out infinite alternate;
+      }
+
+      @keyframes driftStrip1 {
+        0% {
+          transform: rotate(-6.8deg) translateY(-25px);
+        }
+        100% {
+          transform: rotate(-6.2deg) translateY(20px);
+        }
+      }
+
+      @keyframes driftStrip2 {
+        0% {
+          transform: rotate(7.1deg) translateY(20px);
+        }
+        100% {
+          transform: rotate(6.4deg) translateY(-25px);
+        }
+      }
+
+      .strip-item {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 1px;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .strip-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 7s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .slide.active .strip-item img {
+        transform: scale(1.05);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT 2: TRIO BOTANICAL HARMONY (User Ref 2)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-trio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 94vw;
+        max-width: 1460px;
+        height: 90vh;
+        gap: 14px;
+      }
+
+      .trio-header {
+        text-align: center;
+      }
+
+      .trio-header .title-script {
+        font-family: var(--font-script);
+        font-size: clamp(26px, 2.6vw, 36px);
+        color: var(--green-olive);
+        line-height: 1.1;
+      }
+      .trio-header .title-script.red {
+        color: var(--red-crimson);
+      }
+
+      .trio-header .title-names {
+        font-family: var(--font-serif-display);
+        font-size: clamp(20px, 2vw, 28px);
+        font-weight: 500;
+        color: var(--green-olive);
+        line-height: 1.15;
+      }
+      .trio-header .title-names.red {
+        color: var(--red-crimson);
+      }
+
+      .trio-cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        width: 100%;
+        height: 78vh;
+      }
+
+      .trio-card {
+        height: 100%;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 8px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .trio-card::before {
+        content: "";
+        position: absolute;
+        inset: 8px 8px auto 8px;
+        height: 35%;
+        background: linear-gradient(to bottom, rgba(250, 247, 242, 0.75) 0%, transparent 100%);
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .trio-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT 3: LOVE BEYOND TIME & WEDDING CALENDAR (User Ref 3)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-calendar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90vw;
+        max-width: 1400px;
+        height: 88vh;
+        gap: 55px;
+      }
+
+      .cal-photo-wrap {
+        height: 86vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 14px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 4px;
+        position: relative;
+      }
+
+      .cal-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      .cal-content-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 440px;
+        gap: 16px;
+      }
+
+      .cal-title-box {
+        position: relative;
+      }
+
+      .cal-title-box .script-top {
+        font-family: var(--font-script);
+        font-size: 46px;
+        color: var(--gold-champagne);
+        line-height: 0.85;
+        margin-bottom: -10px;
+      }
+
+      .cal-title-box .serif-sub {
+        font-family: var(--font-serif-display);
+        font-size: 28px;
+        color: var(--green-olive);
+        font-weight: 500;
+        margin-left: 65px;
+      }
+
+      .cal-title-box .serif-sub.red {
+        color: var(--red-crimson);
+      }
+
+      .cal-month-header {
+        font-family: var(--font-serif-display);
+        font-size: 16px;
+        color: var(--text-charcoal);
+        letter-spacing: 1.5px;
+        margin-top: 6px;
+      }
+
+      /* Calendar Grid */
+      .cal-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 30px);
+        gap: 6px 10px;
+        font-family: var(--font-serif-display);
+        font-size: 14px;
+        color: var(--text-charcoal);
+        text-align: center;
+        margin: 4px 0 8px 0;
+      }
+
+      .cal-day {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 28px;
+        position: relative;
+      }
+
+      .cal-day.heart-target {
+        font-weight: 700;
+        color: #fff;
+        z-index: 2;
+        background: #e86a82;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(232, 106, 130, 0.45);
+      }
+
+      .love-quote {
+        font-family: var(--font-serif-body);
+        font-size: clamp(14px, 1.2vw, 16px);
+        font-style: italic;
+        line-height: 1.6;
+        color: var(--text-charcoal);
+        max-width: 420px;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT 4: LOVE MASTERPIECE SHOWCASE (User Ref 4 - Elevated)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-cutout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 94vw;
+        max-width: 1440px;
+        height: 88vh;
+        gap: 16px;
+        position: relative;
+      }
+
+      .cutout-quote-box {
+        text-align: center;
+        max-width: 860px;
+        z-index: 10;
+        padding: 0 20px;
+      }
+
+      .cutout-quote-box .script-lead {
+        font-family: var(--font-script);
+        font-size: clamp(24px, 2.6vw, 34px);
+        color: var(--gold-champagne);
+        margin-right: 8px;
+        line-height: 1;
+      }
+
+      .cutout-quote-box .script-lead.red {
+        color: var(--red-crimson);
+      }
+
+      .cutout-quote-box .serif-text {
+        font-family: var(--font-serif-body);
+        font-size: clamp(14px, 1.2vw, 17px);
+        color: var(--text-charcoal);
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      .love-stage-center {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 80vh;
+      }
+
+      /* Giant artistic L O V E letters spanning behind the photo card */
+      .love-backdrop-letters {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-serif-display);
+        font-weight: 900;
+        font-size: min(26vw, 310px);
+        line-height: 0.85;
+        letter-spacing: clamp(16px, 3.2vw, 40px);
+        color: rgba(184, 149, 88, 0.14);
+        text-transform: uppercase;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 1;
+        text-shadow: 0 4px 25px rgba(184, 149, 88, 0.08);
+      }
+
+      .love-backdrop-letters.red {
+        color: rgba(140, 29, 36, 0.11);
+        text-shadow: 0 4px 25px rgba(140, 29, 36, 0.08);
+      }
+
+      /* Masterpiece portrait card with 100% visible, uncropped faces - EXPANDED TO 78VH */
+      .love-card-hero {
+        height: 78vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 12px;
+        box-shadow: 0 25px 60px rgba(42, 38, 35, 0.18), 0 6px 18px rgba(42, 38, 35, 0.08);
+        border-radius: 4px;
+        position: relative;
+        z-index: 5;
+        overflow: hidden;
+      }
+
+      .love-card-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        border-radius: 2px;
+        display: block;
+        transition: transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .slide.active .love-card-hero img {
+        transform: scale(1.06);
+      }
+
+      .cutout-bouquet-decor {
+        position: absolute;
+        bottom: -20px;
+        left: 4vw;
+        width: clamp(220px, 20vw, 300px);
+        mix-blend-mode: multiply;
+        opacity: 0.92;
+        pointer-events: none;
+        z-index: 6;
+        transform: rotate(-6deg);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT 5: ASYMMETRIC STAGGERED MAGAZINE (User Ref 5)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-staggered {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90vw;
+        max-width: 1400px;
+        height: 88vh;
+        gap: 30px;
+      }
+
+      .staggered-left {
+        flex: 0.85;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 10px;
+      }
+
+      .staggered-left .serif-intro {
+        font-family: var(--font-serif-display);
+        font-size: 22px;
+        color: var(--gold-champagne);
+      }
+
+      .staggered-left .script-big {
+        font-family: var(--font-script);
+        font-size: clamp(38px, 4.2vw, 56px);
+        color: var(--green-olive);
+        line-height: 0.95;
+        margin: 4px 0 10px 0;
+      }
+
+      .staggered-left .script-big.red {
+        color: var(--red-crimson);
+      }
+
+      .staggered-right {
+        flex: 1.6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 86vh;
+      }
+
+      .stag-card-1 {
+        height: 76vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: var(--shadow-magazine);
+        position: absolute;
+        left: 2%;
+        bottom: 3%;
+        z-index: 2;
+        transform: rotate(-1.5deg);
+      }
+
+      .stag-card-2 {
+        height: 80vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: var(--shadow-magazine);
+        position: absolute;
+        right: 4%;
+        top: 2%;
+        z-index: 3;
+        transform: rotate(2deg);
+      }
+
+      .stag-card-1 img,
+      .stag-card-2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      .happy-wedding-badge {
+        position: absolute;
+        bottom: -10px;
+        right: 10px;
+        font-family: var(--font-script);
+        font-size: 26px;
+        color: var(--text-charcoal);
+        z-index: 5;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT 6: QUAD PHOTO BOOTH SPREAD
+         ══════════════════════════════════════════════════════════════ */
+      .ly-quad {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 94vw;
+        max-width: 1460px;
+        height: 88vh;
+        gap: 14px;
+      }
+
+      .quad-cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        height: 78vh;
+      }
+
+      .quad-card {
+        height: 100%;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 8px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 3px;
+      }
+
+      .quad-card:nth-child(even) {
+        transform: translateY(10px) rotate(1deg);
+      }
+      .quad-card:nth-child(odd) {
+        transform: translateY(-8px) rotate(-1deg);
+      }
+
+      .quad-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT 7: POLAROID MASTERPIECE DUO
+         ══════════════════════════════════════════════════════════════ */
+      .ly-duo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 48px;
+        width: 92vw;
+        height: 88vh;
+      }
+
+      .duo-card {
+        height: 86vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 14px 14px 40px 14px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 4px;
+        position: relative;
+      }
+
+      .duo-card.tilt-l {
+        transform: rotate(-2deg);
+      }
+      .duo-card.tilt-r {
+        transform: rotate(2deg);
+      }
+
+      .duo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      .duo-card .caption-script {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: var(--font-script);
+        font-size: 20px;
+        color: var(--text-muted);
+      }
+      .duo-card .caption-script.red {
+        color: var(--red-crimson);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: GRAND VOGUE WEDDING MAGAZINE COVER (Slide 1)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-mag-cover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 92vw;
+        max-width: 1420px;
+        height: 88vh;
+        gap: 50px;
+      }
+      .mag-cover-hero {
+        height: 87vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 14px;
+        box-shadow: 0 25px 60px rgba(42, 38, 35, 0.16);
+        border-radius: 4px;
+        position: relative;
+      }
+      .mag-cover-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        border-radius: 2px;
+      }
+      .mag-cover-badge {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(12px);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-family: var(--font-sans);
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--green-olive);
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+      .mag-cover-badge.red {
+        color: var(--red-crimson);
+      }
+      .mag-cover-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 87vh;
+        max-width: 420px;
+      }
+      .mag-cover-header .cover-eyebrow {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold-champagne);
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .mag-cover-header .cover-names {
+        font-family: var(--font-serif-display);
+        font-size: clamp(26px, 2.6vw, 36px);
+        font-weight: 500;
+        color: var(--green-olive);
+        line-height: 1.15;
+      }
+      .mag-cover-header .cover-names.red {
+        color: var(--red-crimson);
+      }
+      .cover-date-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .cover-date-row .cover-date {
+        font-family: var(--font-serif-display);
+        font-size: 16px;
+        letter-spacing: 3px;
+        color: var(--text-charcoal);
+      }
+      .mag-cover-card {
+        height: 48vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 3px;
+        position: relative;
+        align-self: flex-start;
+        transform: rotate(2deg);
+      }
+      .mag-cover-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+      .cover-script-tag {
+        position: absolute;
+        bottom: -10px;
+        right: -8px;
+        font-family: var(--font-script);
+        font-size: 22px;
+        color: var(--green-olive);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .cover-script-tag.red {
+        color: var(--red-crimson);
+      }
+      .cover-quote-block {
+        font-family: var(--font-serif-body);
+        font-size: 14px;
+        font-style: italic;
+        color: var(--text-muted);
+        line-height: 1.5;
+        border-left: 2px solid var(--gold-champagne);
+        padding-left: 14px;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: ARCHITECTURAL ROMAN ARCH WINDOW (European Elegance)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-arch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 94vw;
+        max-width: 1460px;
+        height: 90vh;
+        gap: 12px;
+      }
+      .arch-cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+        height: 78vh;
+      }
+      .arch-card-side {
+        height: 68vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 8px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+      .arch-card-side.left {
+        transform: rotate(-2deg) translateY(10px);
+      }
+      .arch-card-side.right {
+        transform: rotate(2deg) translateY(10px);
+      }
+      .arch-card-center {
+        height: 78vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: 0 20px 48px rgba(42, 36, 33, 0.15);
+        border-radius: 200px 200px 6px 6px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--gold-rule);
+      }
+      .arch-card-center img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        border-radius: 190px 190px 4px 4px;
+      }
+      .arch-card-side img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        border-radius: 2px;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: VOGUE EDITORIAL MAGAZINE SPREAD
+         ══════════════════════════════════════════════════════════════ */
+      .ly-magazine {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 92vw;
+        max-width: 1420px;
+        height: 88vh;
+        gap: 45px;
+      }
+      .mag-hero-col {
+        height: 87vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 14px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 4px;
+        position: relative;
+      }
+      .mag-hero-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+      .mag-hero-col .mag-tag {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(10px);
+        padding: 5px 16px;
+        border-radius: 20px;
+        font-family: var(--font-serif-display);
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--red-crimson);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+      .mag-content-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 87vh;
+        max-width: 440px;
+      }
+      .mag-header-box .mag-issue {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold-champagne);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .mag-header-box .mag-title {
+        font-family: var(--font-script);
+        font-size: 34px;
+        color: var(--red-crimson);
+        line-height: 1;
+      }
+      .mag-header-box .mag-quote {
+        font-family: var(--font-serif-body);
+        font-size: 14px;
+        font-style: italic;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-top: 10px;
+        border-left: 2px solid var(--gold-champagne);
+        padding-left: 12px;
+      }
+      .mag-cards-row {
+        display: flex;
+        gap: 18px;
+        width: 100%;
+      }
+      .mag-sub-card {
+        flex: 1;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 8px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 3px;
+      }
+      .mag-sub-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: MEMORY DRIFT POLAROID SCRAPBOOK TRIO
+         ══════════════════════════════════════════════════════════════ */
+      .ly-polaroids {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 94vw;
+        max-width: 1460px;
+        height: 90vh;
+        gap: 14px;
+      }
+      .polaroids-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 38px;
+        width: 100%;
+      }
+      .polaroid-item {
+        width: clamp(280px, 24vw, 360px);
+        background: #ffffff;
+        padding: 14px 14px 44px 14px;
+        box-shadow: 0 16px 36px rgba(42, 36, 33, 0.12), 0 2px 6px rgba(42, 36, 33, 0.06);
+        border-radius: 4px;
+        position: relative;
+      }
+      .polaroid-item.p1 {
+        transform: rotate(-3deg) translateY(6px);
+      }
+      .polaroid-item.p2 {
+        transform: rotate(1deg) translateY(-10px);
+      }
+      .polaroid-item.p3 {
+        transform: rotate(2.8deg) translateY(8px);
+      }
+      .polaroid-item .polaroid-photo {
+        width: 100%;
+        aspect-ratio: 1 / 1.25;
+        overflow: hidden;
+      }
+      .polaroid-item .polaroid-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+      .polaroid-item .polaroid-note {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: var(--font-script);
+        font-size: 20px;
+        color: var(--red-crimson);
+      }
+      .polaroid-item::after {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 16px;
+        background: rgba(220, 205, 175, 0.55);
+        backdrop-filter: blur(2px);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: ROYAL MONOGRAM OPEN-BOOK DIPTYCH
+         ══════════════════════════════════════════════════════════════ */
+      .ly-monogram-duo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 92vw;
+        max-width: 1420px;
+        height: 88vh;
+        gap: 36px;
+        position: relative;
+      }
+      .mono-card {
+        height: 86vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 12px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 4px;
+        position: relative;
+      }
+      .mono-card.left {
+        transform: rotate(-1.5deg);
+      }
+      .mono-card.right {
+        transform: rotate(1.5deg);
+      }
+      .mono-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+      .center-monogram-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 16px 40px rgba(140, 29, 36, 0.15), 0 0 0 1px var(--gold-rule),
+          inset 0 0 0 4px rgba(200, 162, 101, 0.2);
+        z-index: 10;
+        text-align: center;
+        padding: 12px;
+      }
+      .center-monogram-badge .crest-initials {
+        font-family: var(--font-serif-display);
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--red-crimson);
+        line-height: 1;
+        letter-spacing: 2px;
+      }
+      .center-monogram-badge .crest-names {
+        font-family: var(--font-sans);
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-charcoal);
+        margin: 4px 0 2px 0;
+        font-weight: 500;
+      }
+      .center-monogram-badge .crest-date {
+        font-family: var(--font-serif-display);
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: var(--gold-champagne);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         LAYOUT: ASYMMETRIC FOCUS HERO & SIGNATURE SEAL
+         ══════════════════════════════════════════════════════════════ */
+      .ly-focus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 92vw;
+        max-width: 1420px;
+        height: 88vh;
+        gap: 50px;
+      }
+      .focus-main-card {
+        height: 87vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 14px;
+        box-shadow: 0 24px 50px rgba(42, 36, 33, 0.14);
+        border-radius: 4px;
+        position: relative;
+      }
+      .focus-main-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+      .focus-side-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        max-width: 400px;
+      }
+      .focus-sub-card {
+        height: 52vh;
+        aspect-ratio: 2 / 3;
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: var(--shadow-magazine);
+        border-radius: 3px;
+        transform: rotate(2deg);
+      }
+      .focus-sub-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+      .focus-text-box .focus-script {
+        font-family: var(--font-script);
+        font-size: 34px;
+        color: var(--red-crimson);
+        line-height: 1;
+      }
+      .focus-text-box .focus-serif {
+        font-family: var(--font-serif-body);
+        font-size: 14px;
+        font-style: italic;
+        color: var(--text-charcoal);
+        margin-top: 6px;
+        line-height: 1.5;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW EDITORIAL LAYOUT: FULL-BLEED HERO (inspired by album spreads)
+         ══════════════════════════════════════════════════════════════ */
+      .ly-hero-full {
+        position: absolute;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .ly-hero-full .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block;
+      }
+      .ly-hero-full .hero-caption {
+        position: absolute;
+        bottom: 8vh;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 5;
+      }
+      .ly-hero-full .hero-caption .hc-eyebrow {
+        font-family: var(--font-sans);
+        font-size: clamp(9px, 0.85vw, 12px);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .ly-hero-full .hero-caption .hc-names {
+        font-family: var(--font-serif-display);
+        font-size: clamp(28px, 3.5vw, 52px);
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 1.1;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+      }
+      .ly-hero-full .hero-caption .hc-date {
+        font-family: var(--font-serif-body);
+        font-size: clamp(13px, 1.2vw, 17px);
+        letter-spacing: 5px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 10px;
+      }
+      .ly-hero-full .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 55%);
+        z-index: 2;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: EDITORIAL SPLIT — left full-bleed, right framed with text
+         ══════════════════════════════════════════════════════════════ */
+      .ly-ed-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .ed-split-left {
+        position: relative;
+        overflow: hidden;
+      }
+      .ed-split-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+      }
+      .ed-split-right {
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 6vw 5vw;
+        gap: 24px;
+      }
+      .ed-split-right .esr-frame {
+        width: 100%;
+        max-width: 380px;
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 50px rgba(42, 38, 35, 0.14);
+      }
+      .ed-split-right .esr-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+      }
+      .ed-split-right .esr-text {
+        text-align: center;
+        max-width: 360px;
+      }
+      .ed-split-right .esr-word {
+        font-family: var(--font-serif-display);
+        font-size: clamp(32px, 5vw, 72px);
+        font-weight: 700;
+        line-height: 0.9;
+        color: var(--text-charcoal);
+        opacity: 0.15;
+        letter-spacing: 4px;
+        margin-bottom: -16px;
+        position: relative;
+        z-index: 0;
+      }
+      .ed-split-right .esr-script {
+        font-family: var(--font-script);
+        font-size: clamp(28px, 3vw, 44px);
+        color: var(--green-olive);
+        position: relative;
+        z-index: 1;
+      }
+      .ed-split-right .esr-script.red {
+        color: var(--red-crimson);
+      }
+      .ed-split-right .esr-quote {
+        font-family: var(--font-serif-body);
+        font-size: clamp(12px, 1.1vw, 15px);
+        font-style: italic;
+        color: var(--text-muted);
+        line-height: 1.65;
+        margin-top: 4px;
+      }
+      .ed-split-right .esr-divider {
+        width: 40px;
+        height: 1.5px;
+        background: var(--gold-rule);
+        margin: 4px auto;
+      }
+      .ed-split-right .esr-date {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: var(--gold-champagne);
+        font-weight: 600;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: BILLBOARD — one massive cropped portrait, minimal text
+         ══════════════════════════════════════════════════════════════ */
+      .ly-billboard {
+        position: absolute;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: var(--text-charcoal);
+      }
+      .ly-billboard .bb-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        opacity: 0.88;
+      }
+      .ly-billboard .bb-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 6vh 7vw;
+        z-index: 3;
+      }
+      .ly-billboard .bb-serif-big {
+        font-family: var(--font-serif-display);
+        font-size: clamp(48px, 7vw, 110px);
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 0.92;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        letter-spacing: -2px;
+      }
+      .ly-billboard .bb-sub {
+        font-family: var(--font-serif-body);
+        font-size: clamp(14px, 1.4vw, 20px);
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.75);
+        margin-top: 16px;
+        max-width: 500px;
+        line-height: 1.5;
+      }
+      .ly-billboard .bb-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(0, 0, 0, 0.1) 60%,
+          transparent 100%
+        );
+        z-index: 2;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: THREE-COLUMN TRIPTYCH — 3 portrait photos, full height, thin gap
+         ══════════════════════════════════════════════════════════════ */
+      .ly-triptych {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr 1fr;
+        width: 100vw;
+        height: 100vh;
+        gap: 3px;
+        overflow: hidden;
+        background: var(--bg-ivory);
+      }
+      .triptych-col {
+        overflow: hidden;
+        position: relative;
+      }
+      .triptych-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+      }
+      .triptych-col.center {
+        position: relative;
+      }
+      .triptych-col.center .tri-caption {
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 5;
+      }
+      .triptych-col.center .tri-caption .tcc-script {
+        font-family: var(--font-script);
+        font-size: clamp(24px, 2.5vw, 38px);
+        color: #ffffff;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+        display: block;
+      }
+      .triptych-col.center .tri-caption .tcc-date {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 6px;
+        display: block;
+      }
+      .triptych-col.center .tri-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 50%);
+        z-index: 2;
+      }
+      .triptych-col.side-l,
+      .triptych-col.side-r {
+        opacity: 0.82;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: ASYMMETRIC SPREAD — 60/40 split, ivory background side
+         ══════════════════════════════════════════════════════════════ */
+      .ly-asym-spread {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .asym-photo {
+        position: relative;
+        overflow: hidden;
+      }
+      .asym-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        display: block;
+      }
+      .asym-content {
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 8vh 6vw;
+      }
+      .asym-content .ac-eyebrow {
+        font-family: var(--font-sans);
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold-champagne);
+        font-weight: 600;
+      }
+      .asym-content .ac-serif-title {
+        font-family: var(--font-serif-display);
+        font-size: clamp(22px, 2.8vw, 42px);
+        font-weight: 400;
+        color: var(--text-charcoal);
+        line-height: 1.2;
+      }
+      .asym-content .ac-script {
+        font-family: var(--font-script);
+        font-size: clamp(34px, 4vw, 60px);
+        color: var(--green-olive);
+        line-height: 0.95;
+        margin: -8px 0 4px 0;
+      }
+      .asym-content .ac-script.red {
+        color: var(--red-crimson);
+      }
+      .asym-content .ac-quote {
+        font-family: var(--font-serif-body);
+        font-size: clamp(12px, 1.1vw, 15px);
+        font-style: italic;
+        color: var(--text-muted);
+        line-height: 1.7;
+        border-left: 2px solid var(--gold-rule);
+        padding-left: 16px;
+      }
+      .asym-content .ac-names {
+        font-family: var(--font-serif-display);
+        font-size: clamp(16px, 1.6vw, 22px);
+        color: var(--text-charcoal);
+        letter-spacing: 1px;
+        font-weight: 500;
+      }
+      .asym-content .ac-date-line {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      .asym-content .ac-date-line .adl-rule {
+        flex: 1;
+        height: 1px;
+        background: var(--gold-rule);
+        max-width: 50px;
+      }
+      .asym-content .ac-date-line .adl-date {
+        font-family: var(--font-serif-display);
+        font-size: 13px;
+        letter-spacing: 2.5px;
+        color: var(--text-muted);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: PORTRAIT GRID — 2 tall photos side by side, no white border
+         ══════════════════════════════════════════════════════════════ */
+      .ly-portrait-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        height: 100vh;
+        gap: 4px;
+        background: var(--bg-ivory);
+        overflow: hidden;
+      }
+      .portrait-pair-col {
+        position: relative;
+        overflow: hidden;
+      }
+      .portrait-pair-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+      }
+      .portrait-pair-col .ppc-label {
+        position: absolute;
+        bottom: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-script);
+        font-size: clamp(18px, 1.8vw, 26px);
+        color: #ffffff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        white-space: nowrap;
+        z-index: 5;
+      }
+      .portrait-pair-col .ppc-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 45%);
+        z-index: 2;
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: DIPTYCH WITH TYPOGRAPHY — two photos + bold text between
+         ══════════════════════════════════════════════════════════════ */
+      .ly-diptych-text {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: stretch;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: #ffffff;
+      }
+      .diptych-photo {
+        overflow: hidden;
+        position: relative;
+      }
+      .diptych-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+      }
+      .diptych-center {
+        width: clamp(120px, 12vw, 180px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 10px;
+        gap: 12px;
+        background: #ffffff;
+      }
+      .diptych-center .dc-script {
+        font-family: var(--font-script);
+        font-size: clamp(24px, 2.6vw, 40px);
+        color: var(--green-olive);
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        line-height: 1;
+      }
+      .diptych-center .dc-script.red {
+        color: var(--red-crimson);
+      }
+      .diptych-center .dc-rule {
+        width: 1px;
+        height: 60px;
+        background: var(--gold-rule);
+      }
+      .diptych-center .dc-date {
+        font-family: var(--font-sans);
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold-champagne);
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: CINEMATIC WIDE — ultra-wide letterbox with centered text
+         ══════════════════════════════════════════════════════════════ */
+      .ly-cinematic {
+        position: absolute;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #0e0c0a;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .ly-cinematic .cin-bars {
+        display: none;
+      }
+      .ly-cinematic::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.65) 0%,
+          rgba(0, 0, 0, 0.15) 30%,
+          transparent 60%
+        );
+        z-index: 4;
+        pointer-events: none;
+      }
+      .ly-cinematic .cin-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        opacity: 1;
+      }
+      .ly-cinematic .cin-text {
+        position: absolute;
+        bottom: clamp(40px, 6vh, 80px);
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 6;
+        padding: 0 4vw;
+      }
+      .ly-cinematic .cin-text .ct-word {
+        font-family: var(--font-serif-display);
+        font-size: clamp(12px, 1vw, 16px);
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        font-weight: 300;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .ly-cinematic .cin-text .ct-names {
+        font-family: var(--font-script);
+        font-size: clamp(30px, 3.5vw, 54px);
+        color: #ffffff;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         NEW: MAGAZINE FULL-PAGE — asymmetric pull-quote layout
+         ══════════════════════════════════════════════════════════════ */
+      .ly-pull-quote {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: var(--bg-ivory);
+      }
+      .pq-photo-side {
+        position: relative;
+        overflow: hidden;
+      }
+      .pq-photo-side img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+      }
+      .pq-text-side {
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 8vh 7vw;
+        gap: 28px;
+      }
+      .pq-text-side .pqt-label {
+        font-family: var(--font-sans);
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold-champagne);
+        font-weight: 600;
+      }
+      .pq-text-side .pqt-big-quote {
+        font-family: var(--font-serif-display);
+        font-size: clamp(28px, 4vw, 60px);
+        font-weight: 700;
+        color: var(--text-charcoal);
+        line-height: 1.05;
+        opacity: 0.12;
+        letter-spacing: -1px;
+      }
+      .pq-text-side .pqt-script {
+        font-family: var(--font-script);
+        font-size: clamp(28px, 3.2vw, 52px);
+        color: var(--red-crimson);
+        line-height: 1;
+        margin-top: -30px;
+      }
+      .pq-text-side .pqt-script.green {
+        color: var(--green-olive);
+      }
+      .pq-text-side .pqt-body {
+        font-family: var(--font-serif-body);
+        font-size: clamp(13px, 1.2vw, 16px);
+        font-style: italic;
+        color: var(--text-muted);
+        line-height: 1.7;
+        border-left: 2px solid var(--gold-rule);
+        padding-left: 16px;
+      }
+      .pq-text-side .pqt-names {
+        font-family: var(--font-serif-display);
+        font-size: clamp(14px, 1.4vw, 20px);
+        color: var(--text-charcoal);
+        letter-spacing: 2px;
+        font-weight: 500;
+      }
+      .pq-text-side .pqt-rule {
+        width: 50px;
+        height: 1px;
+        background: var(--gold-rule);
+      }
+
+      /* ── KEN BURNS DYNAMIC CINEMATIC MOTIONS ── */
+      .trio-card img,
+      .cal-photo-wrap img,
+      .love-card-hero img,
+      .stag-card-1 img,
+      .stag-card-2 img,
+      .quad-card img,
+      .duo-card img,
+      .arch-card-center img,
+      .arch-card-side img,
+      .mag-hero-col img,
+      .mag-sub-card img,
+      .polaroid-photo img,
+      .mono-card img,
+      .focus-main-card img,
+      .focus-sub-card img,
+      .mag-cover-hero img,
+      .mag-cover-card img,
+      .ly-hero-full .hero-img,
+      .ed-split-left img,
+      .ed-split-right .esr-frame img,
+      .ly-billboard .bb-photo,
+      .triptych-col img,
+      .asym-photo img,
+      .portrait-pair-col img,
+      .diptych-photo img,
+      .ly-cinematic .cin-photo,
+      .pq-photo-side img {
+        transition: transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+        transform: scale(1);
+      }
+
+      .slide.active .trio-card img,
+      .slide.active .cal-photo-wrap img,
+      .slide.active .love-card-hero img,
+      .slide.active .stag-card-1 img,
+      .slide.active .stag-card-2 img,
+      .slide.active .quad-card img,
+      .slide.active .duo-card img,
+      .slide.active .arch-card-center img,
+      .slide.active .arch-card-side img,
+      .slide.active .mag-hero-col img,
+      .slide.active .mag-sub-card img,
+      .slide.active .polaroid-photo img,
+      .slide.active .mono-card img,
+      .slide.active .focus-main-card img,
+      .slide.active .focus-sub-card img,
+      .slide.active .mag-cover-hero img,
+      .slide.active .mag-cover-card img,
+      .slide.active .ly-hero-full .hero-img,
+      .slide.active .ed-split-left img,
+      .slide.active .ed-split-right .esr-frame img,
+      .slide.active .ly-billboard .bb-photo,
+      .slide.active .triptych-col img,
+      .slide.active .asym-photo img,
+      .slide.active .portrait-pair-col img,
+      .slide.active .diptych-photo img,
+      .slide.active .ly-cinematic .cin-photo,
+      .slide.active .pq-photo-side img {
+        transform: scale(1.065);
+      }
+
+      /* Staggered entrance for captions, titles and cards */
+      .slide .trio-header,
+      .slide .cal-content-wrap,
+      .slide .cutout-quote-box,
+      .slide .staggered-left,
+      .slide .mag-content-col,
+      .slide .focus-side-col,
+      .slide .center-monogram-badge,
+      .slide .mag-cover-side,
+      .slide .ed-split-right,
+      .slide .asym-content,
+      .slide .diptych-center,
+      .slide .pq-text-side,
+      .slide .hero-caption,
+      .slide .bb-text,
+      .slide .cin-text {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .slide.active .trio-header,
+      .slide.active .cal-content-wrap,
+      .slide.active .cutout-quote-box,
+      .slide.active .staggered-left,
+      .slide.active .mag-content-col,
+      .slide.active .focus-side-col,
+      .slide.active .center-monogram-badge,
+      .slide.active .mag-cover-side,
+      .slide.active .ed-split-right,
+      .slide.active .asym-content,
+      .slide.active .diptych-center,
+      .slide.active .pq-text-side,
+      .slide.active .hero-caption,
+      .slide.active .bb-text,
+      .slide.active .cin-text {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.15s;
+      }
+
+      /* ── SLIDE LAYOUT SELECTOR DRAWER ── */
+      #layout-drawer {
+        position: fixed;
+        inset: 0;
+        background: rgba(250, 247, 242, 0.92);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        z-index: 200;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 60px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+        transform: scale(0.98);
+      }
+      #layout-drawer.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+      .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1100px;
+        margin-bottom: 24px;
+      }
+      .drawer-title {
+        font-family: var(--font-serif-display);
+        font-size: 26px;
+        color: var(--text-charcoal);
+        letter-spacing: 1px;
+      }
+      .drawer-close {
+        background: #ffffff;
+        border: 1px solid rgba(184, 149, 88, 0.4);
+        padding: 8px 22px;
+        border-radius: 20px;
+        font-family: var(--font-sans);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+        transition: all 0.2s;
+      }
+      .drawer-close:hover {
+        background: var(--gold-champagne);
+        color: #fff;
+      }
+      .drawer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
+        width: 100%;
+        max-width: 1100px;
+        max-height: 72vh;
+        overflow-y: auto;
+        padding: 10px;
+      }
+      .drawer-item {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 16px;
+        box-shadow: 0 4px 16px rgba(42, 38, 35, 0.07);
+        cursor: pointer;
+        transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        border: 2px solid transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .drawer-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px rgba(42, 38, 35, 0.14);
+        border-color: var(--gold-champagne);
+      }
+      .drawer-item.active {
+        border-color: var(--green-olive);
+        background: #f8fbf7;
+      }
+      .drawer-item.active.red {
+        border-color: var(--red-crimson);
+        background: #fdf7f7;
+      }
+      .drawer-item .item-num {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: var(--gold-champagne);
+      }
+      .drawer-item .item-name {
+        font-family: var(--font-serif-display);
+        font-size: 16px;
+        color: var(--text-charcoal);
+        font-weight: 500;
+      }
+      .drawer-item .item-desc {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      /* ── MINIMALIST FLOATING CONTROLS ── */
+      #controls {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-radius: 40px;
+        border: 1px solid rgba(184, 149, 88, 0.35);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      #controls.visible,
+      #controls:hover {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .ctrl-btn {
+        background: transparent;
+        border: 1px solid rgba(184, 149, 88, 0.35);
+        color: var(--text-charcoal);
+        border-radius: 30px;
+        padding: 7px 16px;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: all 0.25s ease;
+      }
+
+      .ctrl-btn:hover {
+        background: var(--gold-champagne);
+        color: #fff;
+        border-color: var(--gold-champagne);
+      }
+
+      .ctrl-btn.primary {
+        background: var(--green-olive);
+        color: #fff;
+        border-color: var(--green-olive);
+      }
+
+      #slide-counter {
+        color: var(--text-muted);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        min-width: 65px;
+        text-align: center;
+      }
+
+      /* ── LARGE SCREEN / TV / PROJECTOR (≥ 1440px) ── */
+      @media (min-width: 1440px) {
+        /* Filmstrip — give more room to the photos */
+        .filmstrip-left {
+          max-width: 28vw;
+          flex: 0.7;
+        }
+        .filmstrip-left .script-title {
+          font-size: clamp(32px, 2.8vw, 46px);
+        }
+        .filmstrip-left .couple-names-block {
+          font-size: clamp(36px, 3.4vw, 54px);
+        }
+        .filmstrip-right {
+          flex: 1.8;
+          gap: 60px;
+        }
+        .strip-column {
+          width: clamp(310px, 26vw, 420px);
+        }
+
+        /* Trio — taller cards */
+        .trio-cards {
+          height: 82vh;
+          gap: 36px;
+        }
+
+        /* Calendar — bigger photo */
+        .cal-photo-wrap {
+          height: 90vh;
+        }
+        .cal-title-box .script-top {
+          font-size: 56px;
+        }
+        .cal-title-box .serif-sub {
+          font-size: 34px;
+        }
+        .love-quote {
+          font-size: 17px;
+        }
+
+        /* Mag Cover */
+        .mag-cover-hero {
+          height: 90vh;
+        }
+        .mag-cover-side {
+          max-width: 480px;
+        }
+        .mag-cover-header .cover-names {
+          font-size: clamp(32px, 3vw, 44px);
+        }
+        .mag-cover-card {
+          height: 52vh;
+        }
+
+        /* Magazine Spread */
+        .mag-hero-col {
+          height: 90vh;
+        }
+        .mag-content-col {
+          max-width: 500px;
+        }
+        .mag-header-box .mag-title {
+          font-size: 40px;
+        }
+        .mag-header-box .mag-quote {
+          font-size: 16px;
+        }
+
+        /* Staggered */
+        .stag-card-1 {
+          height: 82vh;
+        }
+        .stag-card-2 {
+          height: 86vh;
+        }
+        .staggered-left .script-big {
+          font-size: clamp(52px, 5vw, 70px);
+        }
+
+        /* Duo */
+        .duo-card {
+          height: 88vh;
+        }
+
+        /* Monogram */
+        .mono-card {
+          height: 88vh;
+        }
+        .center-monogram-badge {
+          width: 160px;
+          height: 160px;
+        }
+        .center-monogram-badge .crest-initials {
+          font-size: 36px;
+        }
+
+        /* Cutout / LOVE */
+        .love-card-hero {
+          height: 82vh;
+        }
+        .love-backdrop-letters {
+          font-size: min(28vw, 380px);
+        }
+
+        /* Focus */
+        .focus-main-card {
+          height: 90vh;
+        }
+        .focus-sub-card {
+          height: 58vh;
+        }
+        .focus-text-box .focus-script {
+          font-size: 42px;
+        }
+        .focus-text-box .focus-serif {
+          font-size: 16px;
+        }
+
+        /* Arch */
+        .arch-card-center {
+          height: 84vh;
+        }
+        .arch-card-side {
+          height: 72vh;
+        }
+
+        /* Quad */
+        .quad-cards {
+          height: 84vh;
+          gap: 28px;
+        }
+
+        /* Polaroids */
+        .polaroid-item {
+          width: clamp(310px, 26vw, 420px);
+        }
+
+        /* Controls — larger for TV viewing distance */
+        #controls {
+          padding: 10px 28px;
+          gap: 16px;
+        }
+        .ctrl-btn {
+          padding: 9px 22px;
+          font-size: 13px;
+          letter-spacing: 2px;
+        }
+        #slide-counter {
+          font-size: 14px;
+          min-width: 80px;
+        }
+      }
+
+      /* ══════════════════════════════════════════════════════════════
+         RESPONSIVE DESIGN — TABLET & MOBILE
+         ══════════════════════════════════════════════════════════════ */
+
+      /* ── TABLET (≤ 1024px) ── */
+      @media (max-width: 1024px) {
+        /* Filmstrip: compress the text column, shrink strips */
+        .ly-filmstrip {
+          padding: 0 2vw 0 3vw;
+          gap: 0;
+        }
+        .filmstrip-left {
+          flex: 0.7;
+          max-width: 36vw;
+        }
+        .filmstrip-left .script-title {
+          font-size: clamp(20px, 2.5vw, 30px);
+        }
+        .filmstrip-left .couple-names-block {
+          font-size: clamp(22px, 2.8vw, 36px);
+        }
+        .filmstrip-right {
+          flex: 1.5;
+          gap: 28px;
+        }
+        .strip-column {
+          width: clamp(200px, 20vw, 290px);
+        }
+
+        /* Trio */
+        .trio-cards {
+          gap: 16px;
+        }
+        .trio-card {
+          aspect-ratio: 2 / 3;
+        }
+
+        /* Calendar */
+        .ly-calendar {
+          gap: 30px;
+        }
+        .cal-photo-wrap {
+          height: 80vh;
+        }
+        .cal-content-wrap {
+          max-width: 360px;
+        }
+        .cal-title-box .script-top {
+          font-size: 36px;
+        }
+        .cal-title-box .serif-sub {
+          font-size: 22px;
+        }
+
+        /* Staggered */
+        .ly-staggered {
+          gap: 16px;
+        }
+        .staggered-left {
+          flex: 0.7;
+        }
+
+        /* Mag Cover */
+        .ly-mag-cover {
+          gap: 30px;
+        }
+        .mag-cover-hero {
+          height: 82vh;
+        }
+        .mag-cover-side {
+          max-width: 340px;
+        }
+        .mag-cover-card {
+          height: 40vh;
+        }
+        .mag-cover-header .cover-names {
+          font-size: clamp(22px, 2.4vw, 32px);
+        }
+
+        /* Magazine Spread */
+        .ly-magazine {
+          gap: 28px;
+        }
+        .mag-hero-col {
+          height: 82vh;
+        }
+        .mag-content-col {
+          max-width: 360px;
+        }
+        .mag-cards-row {
+          gap: 12px;
+        }
+
+        /* Polaroids */
+        .polaroids-row {
+          gap: 20px;
+        }
+        .polaroid-item {
+          width: clamp(200px, 20vw, 280px);
+        }
+
+        /* Duo */
+        .ly-duo {
+          gap: 28px;
+        }
+        .duo-card {
+          height: 80vh;
+        }
+
+        /* Monogram duo */
+        .ly-monogram-duo {
+          gap: 20px;
+        }
+        .mono-card {
+          height: 80vh;
+        }
+        .center-monogram-badge {
+          width: 110px;
+          height: 110px;
+        }
+
+        /* Focus */
+        .ly-focus {
+          gap: 28px;
+        }
+        .focus-main-card {
+          height: 82vh;
+        }
+        .focus-sub-card {
+          height: 44vh;
+        }
+
+        /* Arch */
+        .arch-cards {
+          gap: 16px;
+        }
+        .arch-card-side {
+          height: 60vh;
+        }
+        .arch-card-center {
+          height: 70vh;
+        }
+
+        /* Quad */
+        .quad-cards {
+          gap: 12px;
+        }
+
+        /* Controls */
+        #controls {
+          padding: 7px 14px;
+          gap: 8px;
+        }
+        .ctrl-btn {
+          padding: 6px 12px;
+          font-size: 10px;
+        }
+      }
+
+      /* ── MOBILE (≤ 600px) ── */
+      @media (max-width: 600px) {
+        /* ---- FILMSTRIP → single hero strip centered ---- */
+        .ly-filmstrip {
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 0;
+          gap: 0;
+          height: 100vh;
+          width: 100vw;
+          overflow: hidden;
+        }
+        .filmstrip-left {
+          max-width: 100%;
+          flex: none;
+          width: 100%;
+          padding: 18px 20px 10px 20px;
+          z-index: 10;
+        }
+        .filmstrip-left .script-title {
+          font-size: 22px;
+          white-space: normal;
+        }
+        .filmstrip-left .couple-names-block {
+          font-size: 26px;
+          margin: 8px 0 6px 0;
+        }
+        .filmstrip-left .wedding-date {
+          font-size: 13px;
+        }
+        .filmstrip-left .wedding-line {
+          max-width: 60px;
+        }
+        .filmstrip-right {
+          flex: 1;
+          width: 100vw;
+          height: calc(100vh - 110px);
+          gap: 14px;
+          padding: 0 10px;
+          overflow: hidden;
+        }
+        /* Show only 1 strip on mobile, hide the second */
+        .strip-column.strip-right {
+          display: none;
+        }
+        .strip-column.strip-left {
+          width: 90vw;
+          min-height: auto;
+          height: 100%;
+          animation: none;
+          transform: none;
+          overflow: hidden;
+        }
+        /* On mobile, lay strip items side by side horizontally */
+        .strip-column.strip-left {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          scrollbar-width: none;
+          padding: 12px;
+          gap: 10px;
+          align-items: stretch;
+        }
+        .strip-column.strip-left::-webkit-scrollbar {
+          display: none;
+        }
+        .strip-item {
+          flex: 0 0 auto;
+          width: 60vw;
+          height: 100%;
+          aspect-ratio: auto;
+        }
+        .strip-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        /* ---- TRIO → vertical stack, 1 big hero + 2 side ---- */
+        .ly-trio {
+          width: 100vw;
+          height: 100vh;
+          gap: 10px;
+          padding: 16px 14px;
+        }
+        .trio-header {
+          margin-bottom: 4px;
+        }
+        .trio-header .title-script {
+          font-size: 22px;
+        }
+        .trio-header .title-names {
+          font-size: 16px;
+        }
+        .trio-cards {
+          flex-direction: column;
+          height: calc(100vh - 70px);
+          gap: 10px;
+        }
+        /* First card = hero; last 2 side by side */
+        .trio-card:first-child {
+          flex: 2;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 3 / 4;
+        }
+        .trio-card:not(:first-child) {
+          flex: 1;
+          width: 48%;
+          aspect-ratio: 2 / 3;
+        }
+        .trio-cards {
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: center;
+        }
+        .trio-card:first-child {
+          width: 100%;
+          height: 55vh;
+          aspect-ratio: unset;
+        }
+
+        /* ---- CALENDAR → stacked photo then content ---- */
+        .ly-calendar {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+        .cal-photo-wrap {
+          height: 48vh;
+          width: 100%;
+          aspect-ratio: unset;
+          padding: 8px;
+          border-radius: 0;
+          box-shadow: none;
+        }
+        .cal-content-wrap {
+          max-width: 100%;
+          padding: 12px 18px 8px;
+          gap: 8px;
+          overflow-y: auto;
+        }
+        .cal-title-box .script-top {
+          font-size: 28px;
+        }
+        .cal-title-box .serif-sub {
+          font-size: 18px;
+          margin-left: 40px;
+        }
+        .cal-grid {
+          grid-template-columns: repeat(7, 28px);
+          gap: 4px 8px;
+          font-size: 12px;
+        }
+        .cal-day {
+          height: 24px;
+        }
+        .love-quote {
+          font-size: 13px;
+        }
+
+        /* ---- CUTOUT → centered hero, huge word behind ---- */
+        .ly-cutout {
+          width: 100vw;
+          height: 100vh;
+          gap: 10px;
+          padding: 14px;
+        }
+        .cutout-quote-box {
+          padding: 0 10px;
+        }
+        .cutout-quote-box .script-lead {
+          font-size: 22px;
+        }
+        .cutout-quote-box .serif-text {
+          font-size: 13px;
+        }
+        .love-stage-center {
+          height: calc(100vh - 100px);
+        }
+        .love-backdrop-letters {
+          font-size: min(38vw, 180px);
+        }
+        .love-card-hero {
+          height: 72vh;
+          aspect-ratio: 2 / 3;
+        }
+
+        /* ---- STAGGERED → stacked, big photo top ---- */
+        .ly-staggered {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 0;
+          padding: 0;
+        }
+        .staggered-left {
+          flex: none;
+          padding: 16px 18px 10px 18px;
+          width: 100%;
+        }
+        .staggered-left .script-big {
+          font-size: 32px;
+        }
+        .staggered-left .serif-intro {
+          font-size: 16px;
+        }
+        .staggered-right {
+          flex: 1;
+          width: 100%;
+          height: calc(100vh - 130px);
+          position: relative;
+        }
+        .stag-card-1,
+        .stag-card-2 {
+          position: absolute;
+          height: 62vh;
+          aspect-ratio: 2 / 3;
+        }
+        .stag-card-1 {
+          left: 5%;
+          bottom: 5%;
+          z-index: 2;
+          transform: rotate(-2deg);
+        }
+        .stag-card-2 {
+          right: 5%;
+          top: 4%;
+          z-index: 3;
+          transform: rotate(2.5deg);
+        }
+
+        /* ---- QUAD → 2x2 grid ---- */
+        .ly-quad {
+          width: 100vw;
+          height: 100vh;
+          gap: 10px;
+          padding: 14px;
+        }
+        .ly-quad .trio-header .title-script {
+          font-size: 22px;
+        }
+        .ly-quad .trio-header .title-names {
+          font-size: 15px;
+        }
+        .quad-cards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          height: calc(100vh - 80px);
+          gap: 8px;
+        }
+        .quad-card {
+          height: auto;
+          width: 100%;
+          aspect-ratio: 2 / 3;
+        }
+        .quad-card:nth-child(even) {
+          transform: translateY(4px) rotate(0.5deg);
+        }
+        .quad-card:nth-child(odd) {
+          transform: translateY(-4px) rotate(-0.5deg);
+        }
+
+        /* ---- DUO POLAROID → stack ---- */
+        .ly-duo {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 12px;
+          padding: 14px;
+          align-items: center;
+          justify-content: center;
+        }
+        .duo-card {
+          height: auto;
+          width: 78vw;
+          aspect-ratio: 2 / 3;
+          padding: 10px 10px 34px;
+        }
+        .duo-card.tilt-l {
+          transform: rotate(-1.5deg);
+        }
+        .duo-card.tilt-r {
+          transform: rotate(1.5deg);
+        }
+
+        /* ---- MAG COVER → full-bleed hero, side as card below ---- */
+        .ly-mag-cover {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 0;
+          padding: 0;
+          align-items: stretch;
+          justify-content: flex-start;
+        }
+        .mag-cover-hero {
+          height: 62vh;
+          width: 100%;
+          aspect-ratio: unset;
+          border-radius: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        .mag-cover-hero img {
+          border-radius: 0;
+        }
+        .mag-cover-side {
+          height: auto;
+          max-width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          padding: 12px 16px;
+          gap: 10px;
+          justify-content: space-between;
+        }
+        .mag-cover-header {
+          flex: 1;
+          min-width: 180px;
+        }
+        .mag-cover-header .cover-names {
+          font-size: 22px;
+        }
+        .mag-cover-header .cover-eyebrow {
+          font-size: 9px;
+          letter-spacing: 2px;
+        }
+        .mag-cover-card {
+          height: 18vh;
+          aspect-ratio: 2 / 3;
+          transform: rotate(1.5deg);
+          flex-shrink: 0;
+        }
+        .cover-quote-block {
+          display: none;
+        } /* hide on mobile to save space */
+        .cover-date-row .cover-date {
+          font-size: 13px;
+        }
+
+        /* ---- ARCH GALLERY → center card hero, sides hidden ---- */
+        .ly-arch {
+          width: 100vw;
+          height: 100vh;
+          gap: 10px;
+          padding: 14px;
+        }
+        .ly-arch .trio-header .title-script {
+          font-size: 22px;
+        }
+        .ly-arch .trio-header .title-names {
+          font-size: 16px;
+        }
+        .arch-cards {
+          flex-direction: column;
+          align-items: center;
+          height: calc(100vh - 70px);
+          gap: 10px;
+        }
+        .arch-card-side {
+          display: none;
+        }
+        .arch-card-center {
+          height: 75vh;
+          width: 80vw;
+          aspect-ratio: unset;
+        }
+
+        /* ---- MAGAZINE SPREAD → hero only, content below ---- */
+        .ly-magazine {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 0;
+          padding: 0;
+          align-items: stretch;
+        }
+        .mag-hero-col {
+          height: 60vh;
+          width: 100%;
+          aspect-ratio: unset;
+          border-radius: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        .mag-content-col {
+          height: auto;
+          max-width: 100%;
+          padding: 12px 18px;
+          gap: 10px;
+          justify-content: flex-start;
+          overflow-y: auto;
+        }
+        .mag-cards-row {
+          display: none;
+        } /* hide sub cards to keep clean */
+        .mag-header-box .mag-title {
+          font-size: 26px;
+        }
+        .mag-header-box .mag-quote {
+          font-size: 13px;
+        }
+
+        /* ---- POLAROID TRIO → horizontal scroll row ---- */
+        .ly-polaroids {
+          width: 100vw;
+          height: 100vh;
+          gap: 10px;
+          padding: 16px 0 10px;
+        }
+        .ly-polaroids .trio-header {
+          padding: 0 16px;
+        }
+        .ly-polaroids .trio-header .title-script {
+          font-size: 22px;
+        }
+        .ly-polaroids .trio-header .title-names {
+          font-size: 15px;
+        }
+        .polaroids-row {
+          gap: 14px;
+          padding: 0 16px;
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          scrollbar-width: none;
+          height: calc(100vh - 80px);
+          align-items: center;
+        }
+        .polaroids-row::-webkit-scrollbar {
+          display: none;
+        }
+        .polaroid-item {
+          flex-shrink: 0;
+          width: 66vw;
+        }
+        .polaroid-item.p1,
+        .polaroid-item.p2,
+        .polaroid-item.p3 {
+          transform: none;
+        }
+
+        /* ---- MONOGRAM DUO → stacked with badge in middle ---- */
+        .ly-monogram-duo {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 0;
+          padding: 12px;
+          position: relative;
+        }
+        .mono-card {
+          height: 42vh;
+          width: 72vw;
+          align-self: center;
+        }
+        .mono-card.left {
+          transform: rotate(-1deg);
+        }
+        .mono-card.right {
+          transform: rotate(1deg);
+        }
+        .center-monogram-badge {
+          width: 90px;
+          height: 90px;
+          z-index: 20;
+          align-self: center;
+          flex-shrink: 0;
+          margin: -12px 0;
+        }
+        .center-monogram-badge .crest-initials {
+          font-size: 22px;
+        }
+        .center-monogram-badge .crest-names {
+          font-size: 7px;
+        }
+        .center-monogram-badge .crest-date {
+          font-size: 9px;
+        }
+
+        /* ---- FOCUS → hero full width, sub card + text below ---- */
+        .ly-focus {
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          gap: 0;
+          padding: 0;
+          align-items: stretch;
+        }
+        .focus-main-card {
+          height: 60vh;
+          width: 100%;
+          aspect-ratio: unset;
+          border-radius: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        .focus-side-col {
+          max-width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          padding: 12px 18px;
+          gap: 12px;
+          overflow-y: auto;
+        }
+        .focus-text-box {
+          flex: 1;
+          min-width: 160px;
+        }
+        .focus-text-box .focus-script {
+          font-size: 26px;
+        }
+        .focus-text-box .focus-serif {
+          font-size: 13px;
+        }
+        .focus-sub-card {
+          height: 22vh;
+          flex-shrink: 0;
+          transform: rotate(1.5deg);
+        }
+
+        /* ---- CONTROLS → compact, icon + short labels ---- */
+        #controls {
+          bottom: 14px;
+          padding: 7px 12px;
+          gap: 6px;
+          border-radius: 30px;
+        }
+        .ctrl-btn {
+          padding: 6px 10px;
+          font-size: 10px;
+          letter-spacing: 0.8px;
+        }
+        #slide-counter {
+          font-size: 11px;
+          min-width: 40px;
+        }
+
+        /* Hide non-essential buttons on mobile */
+        #btnLayouts {
+          display: none;
+        }
+        #btnFullscreen {
+          display: none;
+        }
+
+        /* ---- DRAWER ---- */
+        #layout-drawer {
+          padding: 20px 16px;
+        }
+        .drawer-header {
+          margin-bottom: 14px;
+        }
+        .drawer-title {
+          font-size: 18px;
+        }
+        .drawer-grid {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 10px;
+          max-height: 75vh;
+        }
+        .drawer-item {
+          padding: 12px;
+        }
+        .drawer-item .item-name {
+          font-size: 14px;
+        }
+      }
+
+      /* ── VERY SMALL (≤ 380px) ── */
+      @media (max-width: 380px) {
+        .ctrl-btn {
+          padding: 5px 8px;
+          font-size: 9px;
+        }
+        #slide-counter {
+          min-width: 34px;
+        }
+        #controls {
+          gap: 4px;
+          padding: 6px 10px;
+        }
+        .duo-card {
+          width: 86vw;
+        }
+        .mag-cover-hero {
+          height: 55vh;
+        }
+        .focus-main-card {
+          height: 55vh;
+        }
+      }
+
+      /* Tùy chỉnh vị trí crop ảnh riêng cho từng slide */
+      .slide.slide-4 .asym-photo img {
+        object-position: center 80% !important;
+      }
+      .slide.slide-5 .ly-billboard .bb-photo {
+        object-position: center 80% !important;
+      }
+      .slide.slide-8 .ly-cinematic .cin-photo {
+        object-position: center 80% !important;
+      }
+      .slide.slide-9 .ly-hero-full .hero-img {
+        object-position: center 10% !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- AMBIENT BASE -->
+    <div id="ambient-canvas"></div>
+    <div id="foliage-shadow"></div>
+
+    <!-- CANVAS SPARKLES & CHAMPAGNE PARTICLES -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- CINEMATIC LIGHT BLOOM -->
+    <div id="light-bloom"></div>
+
+    <!-- AUDIO -->
+    <audio
+      id="bgm"
+      src="audio/Bruno Mars - Marry You (Lyric Video).mp3"
+      loop
+      preload="auto"
+    ></audio>
+
+    <!-- STAGE -->
+    <div id="stage"></div>
+
+    <!-- LAYOUT SELECTION DRAWER -->
+    <div id="layout-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">✨ Danh Sách Layout Trình Chiếu (15 Slides)</div>
+        <button class="drawer-close" id="btnCloseDrawer">✕ Đóng</button>
+      </div>
+      <div class="drawer-grid" id="drawerGrid"></div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div id="controls">
+      <button class="ctrl-btn" id="btnPrev">← Trước</button>
+      <span id="slide-counter">1 / 15</span>
+      <button class="ctrl-btn" id="btnNext">Sau →</button>
+      <button class="ctrl-btn primary" id="btnPlay">⏸ Tạm Dừng</button>
+      <button class="ctrl-btn" id="btnLayouts">📑 Chọn Layout</button>
+      <button class="ctrl-btn" id="btnMusic">🎵 Nhạc</button>
+      <button class="ctrl-btn" id="btnFullscreen">⛶ Toàn Màn Hình</button>
+    </div>
+
+    <script>
+      // ═══════════════════════════════════════════════════════════════
+      //  MAGAZINE WEDDING SLIDESHOW ENGINE
+      //  15 Luxury Editorial Layouts with Strict White & Red Separation
+      // ═══════════════════════════════════════════════════════════════
+
+      const PHOTOS = Array.from({ length: 39 }, (_, i) => `photos/photo_${i + 1}.jpg`);
+
+      // ── SLIDE DEFINITION & CHOREOGRAPHY ──
+      // STRICT RULES IMPLEMENTED:
+      // 1. Act I (Slides 1 to 6): EXACTLY the 15 WHITE OUTFIT photos (indices 0 to 14)
+      // 2. Act II (Slides 7 to 15): EXACTLY the 25 RED ÁO DÀI photos (indices 15 to 39)
+      // 3. White & Red photos NEVER appear in the same slide!
+      // 4. Slide 1 starts with the Grand Vogue Magazine Cover!
+      const SLIDES_CONFIG = [
+        // ── ACT I: WEDDING DRESS — 8 slides, photos 0..14 ──
+        {
+          // Slide 1: Full-bleed hero — one dominant portrait, text overlaid at bottom
+          type: "hero-full",
+          photo: 1,
+          duration: 4000,
+          eyebrow: "THE WEDDING CELEBRATION",
+          names: "Phú Quang & Thảo Ngọc",
+          date: "28 • 09 • 2026",
+          title: "Khai Mạc · Hero Toàn Màn Hình",
+        },
+        {
+          // Slide 2: Editorial split — left full-bleed, right framed + serif text
+          type: "ed-split",
+          photoLeft: 2,
+          photoRight: 4,
+          word: "CHERISH",
+          script: "Tình Yêu",
+          quote:
+            "Giữa vạn người trong nhân gian, gặp được người và cùng người nắm tay đến trọn đời là điều may mắn nhất.",
+          date: "28.09.2026",
+          theme: "green",
+          title: "Trang Đôi Editorial · Trái Tim",
+        },
+        {
+          // Slide 3: Triptych — 3 columns, center taller, caption overlay
+          type: "triptych",
+          photos: [0, 3, 5],
+          script: "Cùng Nhau",
+          date: "28.09.2026",
+          title: "Bộ Ba Cột · Khung Chân Dung",
+        },
+        {
+          // Slide 4: Asymmetric spread — 60/40, big photo + editorial text panel
+          type: "asym-spread",
+          photoLeft: 6,
+          imgPosition: "center 80%",
+          eyebrow: "FOREVER & ALWAYS",
+          serifTitle: "Whispers\nof Romance",
+          script: "Ngọt Ngào",
+          quote:
+            "Có những ngày chẳng cần điều gì lớn lao. Chỉ cần một nụ cười quen thuộc cũng đủ khiến mọi mệt mỏi tan biến.",
+          names: "Phú Quang & Thảo Ngọc",
+          date: "28.09.2026",
+          theme: "green",
+          title: "Bất Đối Xứng · Bảng Chữ Editorial",
+        },
+        {
+          // Slide 5: Billboard — dark cinematic, bold type bottom-left
+          type: "billboard",
+          photo: 8,
+          imgPosition: "center 80%",
+          serifBig: "Forever\nLove",
+          sub: "Khoảnh khắc em mỉm cười là lúc mọi lo toan trong anh tan biến thành mây khói.",
+          title: "Billboard · Chữ Khổng Lồ",
+        },
+        {
+          // Slide 6: Portrait pair — two full-height photos side by side
+          type: "portrait-pair",
+          photos: [9, 11],
+          labelLeft: "Phú Quang",
+          labelRight: "Thảo Ngọc",
+          title: "Song Chân Dung · Hai Người",
+        },
+        {
+          // Slide 7: Diptych with vertical typography between two photos
+          type: "diptych-text",
+          photos: [12, 14],
+          script: "Hẹn Ước",
+          date: "28.09.2026",
+          theme: "green",
+          title: "Nhị Liên Hoàn · Chữ Đứng",
+        },
+        {
+          // Slide 8: Cinematic — letterbox black bars, centered script
+          type: "cinematic",
+          photo: 7,
+          imgPosition: "center 80%",
+          label: "THE WEDDING OF",
+          names: "Phú Quang & Thảo Ngọc",
+          title: "Điện Ảnh · Letterbox",
+        },
+
+        // ── ACT II: ÁO DÀI ĐỎ — 7 slides, photos 15..39 ──
+        {
+          // Slide 9: Full-bleed hero (red) — one dominant áo dài portrait
+          type: "hero-full",
+          photo: 16,
+          imgPosition: "center 10%",
+          duration: 4000,
+          eyebrow: "TRADITIONAL WEDDING",
+          names: "Phú Quang & Thảo Ngọc",
+          date: "28 • 09 • 2026",
+          title: "Khai Mạc Áo Dài · Hero Toàn Màn Hình",
+        },
+        {
+          // Slide 10: Editorial split (red) — bold red áo dài pairing
+          type: "ed-split",
+          photoLeft: 17,
+          photoRight: 19,
+          word: "CHERISH",
+          script: "Duyên Thắm",
+          quote:
+            "Tay đan ngón tay, cùng nhau già đi theo năm tháng. Cảm ơn vì giữa hàng triệu người, ta đã tìm thấy nhau.",
+          date: "28.09.2026",
+          theme: "red",
+          title: "Trang Đôi Áo Dài · Trái Tim",
+        },
+        {
+          // Slide 11: Asymmetric spread (red) with editorial panel
+          type: "asym-spread",
+          photoLeft: 23,
+          eyebrow: "LỄ THÀNH HÔN",
+          serifTitle: "Duyên\nThắm",
+          script: "Trọn Kiếp",
+          quote: "Một đời bình yên bên người mình yêu là điều tuyệt vời nhất trần gian.",
+          names: "Phú Quang & Thảo Ngọc",
+          date: "28.09.2026",
+          theme: "red",
+          title: "Bất Đối Xứng Áo Dài",
+        },
+        {
+          // Slide 12: Triptych (red) — 3 columns of áo dài moments
+          type: "triptych",
+          photos: [28, 30, 33],
+          script: "Hạnh Phúc",
+          date: "28.09.2026",
+          title: "Bộ Ba Áo Dài · Nhịp Điệu",
+        },
+        {
+          // Slide 13: Pull-quote — large serif word + photo + elegant body text
+          type: "pull-quote",
+          photo: 35,
+          label: "SPECIAL EDITION • 28.09.2026",
+          bigWord: "YÊU",
+          script: "Hẹn Ước Trọn Đời",
+          body: "Cảm ơn em vì đã đến bên anh, cho anh biết thế nào là trọn vẹn của yêu thương.",
+          names: "Phú Quang & Thảo Ngọc",
+          theme: "red",
+          title: "Pull-Quote · Hẹn Ước",
+        },
+        {
+          // Slide 14: Portrait pair (red) — two áo dài portraits side by side
+          type: "portrait-pair",
+          photos: [36, 15],
+          labelLeft: "Phú Quang",
+          labelRight: "Thảo Ngọc",
+          title: "Song Chân Dung Áo Dài",
+        },
+        {
+          // Slide 15: Cinematic finale — full screen, áo dài, elegant close
+          type: "cinematic",
+          photo: 18,
+          imgPosition: "center 10%",
+          label: "MÃI MÃI BÊN NHAU",
+          names: "Phú Quang & Thảo Ngọc",
+          title: "Kết Thúc · Toàn Màn Hình",
+        },
+
+        // ── ACT III: ALBUM FULLSCREEN (16 photos from photos/Album/) ──
+        { type: "fullscreen", src: "photos/Album/Bìa.jpg", duration: 2000, title: "Album · Bìa" },
+        { type: "fullscreen", src: "photos/Album/1.jpg", duration: 2000, title: "Album · 1" },
+        { type: "fullscreen", src: "photos/Album/2.jpg", duration: 2000, title: "Album · 2" },
+        { type: "fullscreen", src: "photos/Album/3.jpg", duration: 2000, title: "Album · 3" },
+        { type: "fullscreen", src: "photos/Album/4.jpg", duration: 2000, title: "Album · 4" },
+        { type: "fullscreen", src: "photos/Album/5.jpg", duration: 2000, title: "Album · 5" },
+        { type: "fullscreen", src: "photos/Album/6.jpg", duration: 2000, title: "Album · 6" },
+        { type: "fullscreen", src: "photos/Album/7.jpg", duration: 2000, title: "Album · 7" },
+        { type: "fullscreen", src: "photos/Album/8.jpg", duration: 2000, title: "Album · 8" },
+        { type: "fullscreen", src: "photos/Album/9.jpg", duration: 2000, title: "Album · 9" },
+        { type: "fullscreen", src: "photos/Album/10.jpg", duration: 2000, title: "Album · 10" },
+        { type: "fullscreen", src: "photos/Album/11.jpg", duration: 2000, title: "Album · 11" },
+        { type: "fullscreen", src: "photos/Album/12.jpg", duration: 2000, title: "Album · 12" },
+        { type: "fullscreen", src: "photos/Album/13.jpg", duration: 2000, title: "Album · 13" },
+        { type: "fullscreen", src: "photos/Album/14.jpg", duration: 2000, title: "Album · 14" },
+        { type: "fullscreen", src: "photos/Album/15.jpg", duration: 2000, title: "Album · 15" },
+      ];
+
+      const TOTAL_SLIDES = SLIDES_CONFIG.length;
+
+      // ── BUILD SEPTEMBER 2026 CALENDAR HTML ──
+      function generateCalendarHTML(highlightDay) {
+        // September 2026: Day 1 is Tuesday (index 1). Days: 1 to 30.
+        let html = '<div class="cal-grid">';
+        // Monday empty slot
+        html += '<div class="cal-day"></div>';
+        for (let d = 1; d <= 30; d++) {
+          const isTarget = d === highlightDay;
+          html += `<div class="cal-day ${isTarget ? "heart-target" : ""}">${d}</div>`;
+        }
+        html += "</div>";
+        return html;
+      }
+
+      // ── BUILD SLIDE DOM ──
+      function createSlideDOM(cfg, idx) {
+        const slide = document.createElement("div");
+        slide.className = `slide slide-${idx !== undefined ? idx + 1 : 1}`;
+        slide.dataset.slideIndex = idx !== undefined ? idx : 0;
+
+        if (cfg.type === "magazine-cover") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-mag-cover">
+              <div class="mag-cover-hero">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Hero" />
+                <div class="mag-cover-badge ${isRed ? "red" : ""}">${
+            cfg.badge || "SPECIAL WEDDING ISSUE"
+          }</div>
+              </div>
+              <div class="mag-cover-side">
+                <div class="mag-cover-header">
+                  <div class="cover-eyebrow">${cfg.eyebrow || "THE WEDDING CELEBRATION"}</div>
+                  <div class="cover-names ${isRed ? "red" : ""}">${cfg.names}</div>
+                  <div class="cover-date-row">
+                    <div class="wedding-line" style="width: 40px; margin: 0;"></div>
+                    <div class="cover-date">${cfg.date}</div>
+                  </div>
+                </div>
+                <div class="mag-cover-card">
+                  <img src="${PHOTOS[cfg.photos[1]]}" alt="Wedding Companion" />
+                  <div class="cover-script-tag ${isRed ? "red" : ""}">${
+            cfg.scriptTitle || "Forever"
+          }</div>
+                </div>
+                <div class="cover-quote-block">
+                  "${
+                    cfg.quote ||
+                    "Tình yêu không chỉ là nhìn nhau, mà là cùng nhau nhìn về một hướng."
+                  }"
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "filmstrip") {
+          const isRed = cfg.theme === "red";
+          const half = Math.ceil(cfg.photos.length / 2);
+          const leftPhotos = cfg.photos.slice(0, half);
+          const rightPhotos = cfg.photos.slice(half);
+          const leftItems = leftPhotos
+            .map(
+              (p) => `<div class="strip-item"><img src="${PHOTOS[p]}" alt="Wedding Photo" /></div>`
+            )
+            .join("");
+          const rightItems = rightPhotos
+            .map(
+              (p) => `<div class="strip-item"><img src="${PHOTOS[p]}" alt="Wedding Photo" /></div>`
+            )
+            .join("");
+          slide.innerHTML = `
+            <div class="ly-filmstrip">
+              <div class="filmstrip-left">
+                <div class="wedding-header-row">
+                  <div class="script-title ${isRed ? "red" : ""}">${cfg.scriptTitle}</div>
+                  <div class="wedding-line"></div>
+                </div>
+                <div class="couple-names-block ${isRed ? "red" : ""}">${cfg.names}</div>
+                <div class="wedding-date-row">
+                  <div class="date-line"></div>
+                  <div class="wedding-date">${cfg.date}</div>
+                </div>
+              </div>
+
+              <div class="filmstrip-right">
+                <!-- Film Strip 1 (Left, Tilted -6.5deg) -->
+                <div class="strip-column strip-left">
+                  ${leftItems}
+                </div>
+
+                <!-- Film Strip 2 (Right, Tilted +6.8deg) -->
+                <div class="strip-column strip-right">
+                  ${rightItems}
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "arch-gallery") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-arch">
+              <div class="trio-header">
+                <div class="title-script ${isRed ? "red" : ""}">${cfg.scriptTitle}</div>
+                <div class="title-names ${isRed ? "red" : ""}">${cfg.names}</div>
+              </div>
+              <div class="arch-cards">
+                <div class="arch-card-side left"><img src="${
+                  PHOTOS[cfg.photos[0]]
+                }" alt="Wedding Photo" /></div>
+                <div class="arch-card-center"><img src="${
+                  PHOTOS[cfg.photos[1]]
+                }" alt="Wedding Photo" /></div>
+                <div class="arch-card-side right"><img src="${
+                  PHOTOS[cfg.photos[2]]
+                }" alt="Wedding Photo" /></div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "magazine-spread") {
+          slide.innerHTML = `
+            <div class="ly-magazine">
+              <div class="mag-hero-col">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Hero" />
+                <div class="mag-tag">${cfg.badge || "EDITORIAL LOVE"}</div>
+              </div>
+              <div class="mag-content-col">
+                <div class="mag-header-box">
+                  <div class="mag-issue">${cfg.issue || "SPECIAL EDITION • 28.09.2026"}</div>
+                  <div class="mag-title">${cfg.scriptTitle}</div>
+                  <div class="mag-quote">"${cfg.quote}"</div>
+                </div>
+                <div class="mag-cards-row">
+                  <div class="mag-sub-card"><img src="${
+                    PHOTOS[cfg.photos[1]]
+                  }" alt="Wedding Photo" /></div>
+                  <div class="mag-sub-card"><img src="${
+                    PHOTOS[cfg.photos[2]]
+                  }" alt="Wedding Photo" /></div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "polaroid-trio") {
+          slide.innerHTML = `
+            <div class="ly-polaroids">
+              <div class="trio-header">
+                <div class="title-script red">${cfg.scriptTitle}</div>
+                <div class="title-names red">${cfg.names}</div>
+              </div>
+              <div class="polaroids-row">
+                <div class="polaroid-item p1">
+                  <div class="polaroid-photo"><img src="${
+                    PHOTOS[cfg.photos[0]]
+                  }" alt="Polaroid Photo" /></div>
+                  <div class="polaroid-note">${cfg.notes[0]}</div>
+                </div>
+                <div class="polaroid-item p2">
+                  <div class="polaroid-photo"><img src="${
+                    PHOTOS[cfg.photos[1]]
+                  }" alt="Polaroid Photo" /></div>
+                  <div class="polaroid-note">${cfg.notes[1]}</div>
+                </div>
+                <div class="polaroid-item p3">
+                  <div class="polaroid-photo"><img src="${
+                    PHOTOS[cfg.photos[2]]
+                  }" alt="Polaroid Photo" /></div>
+                  <div class="polaroid-note">${cfg.notes[2]}</div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "duo-monogram") {
+          slide.innerHTML = `
+            <div class="ly-monogram-duo">
+              <div class="mono-card left"><img src="${
+                PHOTOS[cfg.photos[0]]
+              }" alt="Wedding Portrait" /></div>
+              <div class="center-monogram-badge">
+                <div class="crest-initials">NQ</div>
+                <div class="crest-names">Phú Quang & Thảo Ngọc</div>
+                <div class="crest-date">28.09.2026</div>
+              </div>
+              <div class="mono-card right"><img src="${
+                PHOTOS[cfg.photos[1]]
+              }" alt="Wedding Portrait" /></div>
+            </div>
+          `;
+        } else if (cfg.type === "focus-portrait") {
+          slide.innerHTML = `
+            <div class="ly-focus">
+              <div class="focus-main-card">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Focus Hero" />
+              </div>
+              <div class="focus-side-col">
+                <div class="focus-text-box">
+                  <div class="focus-script">${cfg.scriptTitle}</div>
+                  <div class="focus-serif">"${cfg.quote}"</div>
+                </div>
+                <div class="focus-sub-card">
+                  <img src="${PHOTOS[cfg.photos[1]]}" alt="Wedding Photo" />
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "trio") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-trio">
+              <div class="trio-header">
+                <div class="title-script ${isRed ? "red" : ""}">${cfg.scriptTitle}</div>
+                <div class="title-names ${isRed ? "red" : ""}">${cfg.names}</div>
+              </div>
+              <div class="trio-cards">
+                <div class="trio-card"><img src="${
+                  PHOTOS[cfg.photos[0]]
+                }" alt="Wedding Photo" /></div>
+                <div class="trio-card"><img src="${
+                  PHOTOS[cfg.photos[1]]
+                }" alt="Wedding Photo" /></div>
+                <div class="trio-card"><img src="${
+                  PHOTOS[cfg.photos[2]]
+                }" alt="Wedding Photo" /></div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "calendar") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-calendar">
+              <div class="cal-photo-wrap">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Portrait" />
+              </div>
+              <div class="cal-content-wrap">
+                <div class="cal-title-box">
+                  <div class="script-top">${cfg.titleTop}</div>
+                  <div class="serif-sub ${isRed ? "red" : ""}">${cfg.titleSub}</div>
+                </div>
+                <div class="cal-month-header">${cfg.month}</div>
+                ${generateCalendarHTML(cfg.highlightDay)}
+                <div class="love-quote">"${cfg.quote}"</div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "cutout") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-cutout">
+              <div class="cutout-quote-box">
+                <span class="script-lead ${isRed ? "red" : ""}">${cfg.quoteLead}</span>
+                <span class="serif-text">${cfg.quoteText}</span>
+              </div>
+              <div class="love-stage-center">
+                <!-- Giant artistic typography backdrop -->
+                <div class="love-backdrop-letters ${isRed ? "red" : ""}">${cfg.word}</div>
+
+                <!-- Masterpiece portrait card with 100% visible, sharp faces -->
+                <div class="love-card-hero">
+                  <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Portrait" />
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "staggered") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-staggered">
+              <div class="staggered-left">
+                <div class="serif-intro">${cfg.serifIntro}</div>
+                <div class="script-big ${isRed ? "red" : ""}">${cfg.scriptBig}</div>
+                <div class="wedding-date-row" style="margin-bottom: 12px;">
+                  <div class="date-line"></div>
+                  <div class="wedding-date">${cfg.date}</div>
+                </div>
+                <div class="couple-names-block ${
+                  isRed ? "red" : ""
+                }" style="font-size: 32px; margin: 8px 0;">${cfg.names}</div>
+              </div>
+              <div class="staggered-right">
+                <div class="stag-card-1"><img src="${
+                  PHOTOS[cfg.photos[0]]
+                }" alt="Wedding Photo" /></div>
+                <div class="stag-card-2"><img src="${
+                  PHOTOS[cfg.photos[1]]
+                }" alt="Wedding Photo" /></div>
+                <div class="happy-wedding-badge">${cfg.badge}</div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "quad") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-quad">
+              <div class="trio-header">
+                <div class="title-script ${isRed ? "red" : ""}">${cfg.scriptTitle}</div>
+                <div class="title-names ${isRed ? "red" : ""}" style="font-size: 34px;">${
+            cfg.names
+          }</div>
+              </div>
+              <div class="quad-cards">
+                <div class="quad-card"><img src="${
+                  PHOTOS[cfg.photos[0]]
+                }" alt="Wedding Photo" /></div>
+                <div class="quad-card"><img src="${
+                  PHOTOS[cfg.photos[1]]
+                }" alt="Wedding Photo" /></div>
+                <div class="quad-card"><img src="${
+                  PHOTOS[cfg.photos[2]]
+                }" alt="Wedding Photo" /></div>
+                <div class="quad-card"><img src="${
+                  PHOTOS[cfg.photos[3]]
+                }" alt="Wedding Photo" /></div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "duo") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-duo">
+              <div class="duo-card tilt-l">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Photo" />
+                <div class="caption-script ${isRed ? "red" : ""}">${cfg.captionLeft}</div>
+              </div>
+              <div class="duo-card tilt-r">
+                <img src="${PHOTOS[cfg.photos[1]]}" alt="Wedding Photo" />
+                <div class="caption-script ${isRed ? "red" : ""}">${cfg.captionRight}</div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "fullscreen") {
+          slide.innerHTML = `
+            <div class="ly-fullscreen">
+              <img src="${cfg.src}" alt="Album Photo" />
+            </div>
+          `;
+        } else if (cfg.type === "hero-full") {
+          slide.innerHTML = `
+            <div class="ly-hero-full">
+              <div class="hero-overlay"></div>
+              <img class="hero-img" src="${PHOTOS[cfg.photo]}" alt="Wedding Hero" ${
+            cfg.imgPosition ? `style="object-position: ${cfg.imgPosition};"` : ""
+          } />
+              <div class="hero-caption">
+                <div class="hc-eyebrow">${cfg.eyebrow || "THE WEDDING CELEBRATION"}</div>
+                <div class="hc-names">${cfg.names || "Phú Quang & Thảo Ngọc"}</div>
+                <div class="hc-date">${cfg.date || "28.09.2026"}</div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "ed-split") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-ed-split">
+              <div class="ed-split-left">
+                <img src="${PHOTOS[cfg.photoLeft]}" alt="Wedding Photo" />
+              </div>
+              <div class="ed-split-right">
+                <div class="esr-frame">
+                  <img src="${PHOTOS[cfg.photoRight]}" alt="Wedding Photo" />
+                </div>
+                <div class="esr-text">
+                  <div class="esr-word">${cfg.word || "CHERISH"}</div>
+                  <div class="esr-script ${isRed ? "red" : ""}">${cfg.script || "Tình Yêu"}</div>
+                  <div class="esr-divider"></div>
+                  <div class="esr-quote">${cfg.quote || ""}</div>
+                  <div class="esr-date">${cfg.date || "28.09.2026"}</div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "billboard") {
+          slide.innerHTML = `
+            <div class="ly-billboard">
+              <div class="bb-overlay"></div>
+              <img class="bb-photo" src="${PHOTOS[cfg.photo]}" alt="Wedding Photo" ${
+            cfg.imgPosition ? `style="object-position: ${cfg.imgPosition};"` : ""
+          } />
+              <div class="bb-text">
+                <div class="bb-serif-big">${(cfg.serifBig || "Forever\nLove").replace(
+                  /\n/g,
+                  "<br/>"
+                )}</div>
+                <div class="bb-sub">${cfg.sub || ""}</div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "triptych") {
+          slide.innerHTML = `
+            <div class="ly-triptych">
+              <div class="triptych-col side-l">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Photo" />
+              </div>
+              <div class="triptych-col center">
+                <img src="${PHOTOS[cfg.photos[1]]}" alt="Wedding Photo" />
+                <div class="tri-overlay"></div>
+                <div class="tri-caption">
+                  <span class="tcc-script">${cfg.script || "Cùng Nhau"}</span>
+                  <span class="tcc-date">${cfg.date || "28.09.2026"}</span>
+                </div>
+              </div>
+              <div class="triptych-col side-r">
+                <img src="${PHOTOS[cfg.photos[2]]}" alt="Wedding Photo" />
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "asym-spread") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-asym-spread">
+              <div class="asym-photo">
+                <img src="${PHOTOS[cfg.photoLeft]}" alt="Wedding Photo" ${
+            cfg.imgPosition ? `style="object-position: ${cfg.imgPosition};"` : ""
+          } />
+              </div>
+              <div class="asym-content">
+                <div>
+                  <div class="ac-eyebrow">${cfg.eyebrow || "FOREVER & ALWAYS"}</div>
+                  <div class="ac-serif-title">${(cfg.serifTitle || "Whispers\nof Romance").replace(
+                    /\n/g,
+                    "<br/>"
+                  )}</div>
+                  <div class="ac-script ${isRed ? "red" : ""}">${cfg.script || "Ngọt Ngào"}</div>
+                </div>
+                <div class="ac-quote">${cfg.quote || ""}</div>
+                <div>
+                  <div class="ac-names">${cfg.names || "Phú Quang & Thảo Ngọc"}</div>
+                  <div class="ac-date-line">
+                    <div class="adl-rule"></div>
+                    <div class="adl-date">${cfg.date || "28.09.2026"}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "portrait-pair") {
+          slide.innerHTML = `
+            <div class="ly-portrait-pair">
+              <div class="portrait-pair-col">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Portrait" />
+                <div class="ppc-overlay"></div>
+                <div class="ppc-label">${cfg.labelLeft || ""}</div>
+              </div>
+              <div class="portrait-pair-col">
+                <img src="${PHOTOS[cfg.photos[1]]}" alt="Wedding Portrait" />
+                <div class="ppc-overlay"></div>
+                <div class="ppc-label">${cfg.labelRight || ""}</div>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "diptych-text") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-diptych-text">
+              <div class="diptych-photo">
+                <img src="${PHOTOS[cfg.photos[0]]}" alt="Wedding Photo" />
+              </div>
+              <div class="diptych-center">
+                <div class="dc-script ${isRed ? "red" : ""}">${cfg.script || "Hẹn Ước"}</div>
+                <div class="dc-rule"></div>
+                <div class="dc-date">${cfg.date || "28.09.2026"}</div>
+              </div>
+              <div class="diptych-photo">
+                <img src="${PHOTOS[cfg.photos[1]]}" alt="Wedding Photo" />
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "cinematic") {
+          slide.innerHTML = `
+            <div class="ly-cinematic">
+              <div class="cin-bars top"></div>
+              <img class="cin-photo" src="${PHOTOS[cfg.photo]}" alt="Wedding Photo" ${
+            cfg.imgPosition ? `style="object-position: ${cfg.imgPosition};"` : ""
+          } />
+              <div class="cin-bars bottom"></div>
+              <div class="cin-text">
+                <span class="ct-word">${cfg.label || "THE WEDDING OF"}</span>
+                <span class="ct-names">${cfg.names || "Phú Quang & Thảo Ngọc"}</span>
+              </div>
+            </div>
+          `;
+        } else if (cfg.type === "pull-quote") {
+          const isRed = cfg.theme === "red";
+          slide.innerHTML = `
+            <div class="ly-pull-quote">
+              <div class="pq-photo-side">
+                <img src="${PHOTOS[cfg.photo]}" alt="Wedding Photo" />
+              </div>
+              <div class="pq-text-side">
+                <div class="pqt-label">${cfg.label || "SPECIAL EDITION • 28.09.2026"}</div>
+                <div>
+                  <div class="pqt-big-quote">${cfg.bigWord || "YÊU"}</div>
+                  <div class="pqt-script ${isRed ? "" : "green"}">${
+            cfg.script || "Hẹn Ước Trọn Đời"
+          }</div>
+                </div>
+                <div class="pqt-rule"></div>
+                <div class="pqt-body">${cfg.body || ""}</div>
+                <div class="pqt-names">${cfg.names || "Phú Quang & Thảo Ngọc"}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        return slide;
+      }
+
+      // ── RENDER STAGE ──
+      const stage = document.getElementById("stage");
+      SLIDES_CONFIG.forEach((cfg, idx) => stage.appendChild(createSlideDOM(cfg, idx)));
+      const slides = stage.querySelectorAll(".slide");
+
+      // ── SLIDESHOW CONTROLLER ──
+      const slideCounter = document.getElementById("slide-counter");
+      const lightBloom = document.getElementById("light-bloom");
+      const controls = document.getElementById("controls");
+      const bgm = document.getElementById("bgm");
+
+      const btnPlay = document.getElementById("btnPlay");
+      const btnPrev = document.getElementById("btnPrev");
+      const btnNext = document.getElementById("btnNext");
+      const btnMusic = document.getElementById("btnMusic");
+      const btnFullscreen = document.getElementById("btnFullscreen");
+
+      let currentIndex = 0;
+      let isPlaying = false;
+      let slideTimer = null;
+      let controlsHideTimeout = null;
+
+      function triggerBloom() {
+        lightBloom.style.transition = "opacity 0.4s ease-out, transform 0.6s ease-out";
+        lightBloom.style.opacity = "0.55";
+        lightBloom.style.transform = "scale(1.06)";
+        setTimeout(() => {
+          lightBloom.style.transition = "opacity 0.85s ease-in, transform 0.85s ease-in";
+          lightBloom.style.opacity = "0";
+          lightBloom.style.transform = "scale(1)";
+        }, 380);
+      }
+
+      function goToSlide(nextIdx) {
+        if (nextIdx < 0) nextIdx = TOTAL_SLIDES - 1;
+        if (nextIdx >= TOTAL_SLIDES) nextIdx = 0;
+        if (nextIdx === currentIndex && slides[currentIndex].classList.contains("active")) return;
+
+        const prevSlide = slides[currentIndex];
+        const nextSlide = slides[nextIdx];
+
+        if (prevSlide && prevSlide !== nextSlide && prevSlide.classList.contains("active")) {
+          prevSlide.classList.remove("active");
+          prevSlide.classList.add("leaving");
+          setTimeout(() => {
+            prevSlide.classList.remove("leaving");
+          }, 1250);
+        }
+
+        // Restart image Ken Burns zooms cleanly on nextSlide
+        const imgs = nextSlide.querySelectorAll("img");
+        imgs.forEach((img) => {
+          img.style.transition = "none";
+          img.style.transform = "scale(1)";
+          void img.offsetWidth; // trigger reflow
+          img.style.transition = "";
+        });
+
+        nextSlide.classList.add("active");
+        triggerBloom();
+
+        currentIndex = nextIdx;
+        slideCounter.textContent = `${currentIndex + 1} / ${TOTAL_SLIDES}`;
+      }
+
+      function scheduleNext() {
+        if (slideTimer) clearTimeout(slideTimer);
+        const duration = SLIDES_CONFIG[currentIndex].duration || 6500;
+        slideTimer = setTimeout(() => {
+          if (isPlaying) {
+            goToSlide(currentIndex + 1);
+            scheduleNext();
+          }
+        }, duration);
+      }
+
+      function play() {
+        isPlaying = true;
+        btnPlay.textContent = "⏸ Tạm Dừng";
+        btnPlay.classList.add("primary");
+        if (bgm && bgm.paused && bgm.src) {
+          bgm.play().catch(() => {});
+        }
+        scheduleNext();
+      }
+
+      function pause() {
+        isPlaying = false;
+        btnPlay.textContent = "▶ Tiếp Tục";
+        btnPlay.classList.remove("primary");
+        if (slideTimer) clearTimeout(slideTimer);
+      }
+
+      // ── CONTROLS INTERACTIONS ──
+      btnPlay.addEventListener("click", (e) => {
+        e.stopPropagation();
+        isPlaying ? pause() : play();
+      });
+
+      btnNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (slideTimer) clearTimeout(slideTimer);
+        goToSlide(currentIndex + 1);
+        if (isPlaying) scheduleNext();
+      });
+
+      btnPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (slideTimer) clearTimeout(slideTimer);
+        goToSlide(currentIndex - 1);
+        if (isPlaying) scheduleNext();
+      });
+
+      btnMusic.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!bgm) return;
+        if (bgm.paused) {
+          bgm
+            .play()
+            .then(() => {
+              btnMusic.textContent = "🎵 Bật";
+            })
+            .catch(() => {
+              alert("Bỏ file marry_you.mp3 vào thư mục photos/ để phát nhạc nhé!");
+            });
+        } else {
+          bgm.pause();
+          btnMusic.textContent = "🔇 Tắt";
+        }
+      });
+
+      btnFullscreen.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      });
+
+      // ── LAYOUT DRAWER LOGIC ──
+      const btnLayouts = document.getElementById("btnLayouts");
+      const layoutDrawer = document.getElementById("layout-drawer");
+      const btnCloseDrawer = document.getElementById("btnCloseDrawer");
+      const drawerGrid = document.getElementById("drawerGrid");
+
+      // Populate Layout Drawer Items
+      SLIDES_CONFIG.forEach((cfg, idx) => {
+        const item = document.createElement("div");
+        item.className = `drawer-item ${cfg.theme === "red" ? "red" : ""}`;
+        item.innerHTML = `
+          <div class="item-num">SLIDE ${String(idx + 1).padStart(2, "0")} • ${
+          cfg.theme === "red" ? "ÁO DÀI ĐỎ" : cfg.type === "fullscreen" ? "ALBUM" : "VÁY CƯỚI TRẮNG"
+        }</div>
+          <div class="item-name">${cfg.title || cfg.type}</div>
+          <div class="item-desc">${cfg.photos ? cfg.photos.length + " ảnh" : "1 ảnh"} (${
+          cfg.type
+        })</div>
+        `;
+        item.addEventListener("click", () => {
+          goToSlide(idx);
+          layoutDrawer.classList.remove("open");
+          if (isPlaying) scheduleNext();
+        });
+        drawerGrid.appendChild(item);
+      });
+
+      btnLayouts.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const items = drawerGrid.querySelectorAll(".drawer-item");
+        items.forEach((it, i) => {
+          if (i === currentIndex) {
+            it.classList.add("active");
+          } else {
+            it.classList.remove("active");
+          }
+        });
+        layoutDrawer.classList.add("open");
+      });
+
+      btnCloseDrawer.addEventListener("click", (e) => {
+        e.stopPropagation();
+        layoutDrawer.classList.remove("open");
+      });
+
+      layoutDrawer.addEventListener("click", (e) => {
+        if (e.target === layoutDrawer) {
+          layoutDrawer.classList.remove("open");
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        wakeControls();
+        if (e.key === "ArrowRight" || e.key === " ") {
+          e.preventDefault();
+          btnNext.click();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          btnPrev.click();
+        } else if (e.key.toLowerCase() === "p") {
+          btnPlay.click();
+        } else if (e.key.toLowerCase() === "f") {
+          btnFullscreen.click();
+        } else if (e.key.toLowerCase() === "m") {
+          btnMusic.click();
+        } else if (e.key.toLowerCase() === "l") {
+          btnLayouts.click();
+        } else if (e.key === "Escape" && layoutDrawer.classList.contains("open")) {
+          layoutDrawer.classList.remove("open");
+        }
+      });
+
+      // Click anywhere to play/pause
+      stage.addEventListener("click", () => {
+        wakeControls();
+        isPlaying ? pause() : play();
+      });
+
+      function wakeControls() {
+        controls.classList.add("visible");
+        if (controlsHideTimeout) clearTimeout(controlsHideTimeout);
+        controlsHideTimeout = setTimeout(() => {
+          if (!controls.matches(":hover")) {
+            controls.classList.remove("visible");
+          }
+        }, 2600);
+      }
+      document.addEventListener("mousemove", wakeControls);
+      document.addEventListener("touchstart", wakeControls);
+
+      // ── TOUCH SWIPE NAVIGATION (mobile) ──
+      let touchStartX = 0;
+      let touchStartY = 0;
+      stage.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        },
+        { passive: true }
+      );
+      stage.addEventListener(
+        "touchend",
+        (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+          // Only register horizontal swipes (more horizontal than vertical)
+          if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+            if (dx < 0) {
+              // Swipe left → next slide
+              if (slideTimer) clearTimeout(slideTimer);
+              goToSlide(currentIndex + 1);
+              if (isPlaying) scheduleNext();
+            } else {
+              // Swipe right → previous slide
+              if (slideTimer) clearTimeout(slideTimer);
+              goToSlide(currentIndex - 1);
+              if (isPlaying) scheduleNext();
+            }
+          }
+        },
+        { passive: true }
+      );
+
+      // ── CELEBRATORY WEDDING FLOATING BUBBLES SYSTEM ──
+      const canvas = document.getElementById("sparkle-canvas");
+      const ctx = canvas.getContext("2d");
+      let cw, ch;
+
+      function resizeCanvas() {
+        cw = canvas.width = window.innerWidth;
+        ch = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      // 85 Floating Bubbles with realistic 3D sheen, varied sizes & organic sway
+      const bubbles = Array.from({ length: 85 }, () => createBubble(true));
+
+      function createBubble(initial = false) {
+        const r =
+          Math.random() < 0.22
+            ? Math.random() * 18 + 18 // Large dreamy celebration bubbles (18px - 36px)
+            : Math.random() < 0.65
+            ? Math.random() * 10 + 8 // Medium floating bubbles (8px - 18px)
+            : Math.random() * 4 + 3; // Micro sparkling bubbles (3px - 7px)
+
+        const xBase = Math.random() * cw;
+        return {
+          xBase: xBase,
+          x: xBase,
+          y: initial ? Math.random() * ch : ch + r + Math.random() * 60,
+          r: r,
+          vy: -(Math.random() * 0.5 + 0.3 + (r < 8 ? 0.2 : 0)), // upward drift
+          sway: Math.random() * Math.PI * 2,
+          swaySpeed: Math.random() * 0.015 + 0.008,
+          swayAmp: Math.random() * 25 + 15,
+          alpha: Math.random() * 0.45 + 0.35,
+          shimmer: Math.random() * Math.PI,
+        };
+      }
+
+      function renderBubbles() {
+        ctx.clearRect(0, 0, cw, ch);
+
+        for (let i = 0; i < bubbles.length; i++) {
+          const b = bubbles[i];
+          b.y += b.vy;
+          b.sway += b.swaySpeed;
+          b.x = b.xBase + Math.sin(b.sway) * b.swayAmp;
+          b.shimmer += 0.02;
+
+          // Recycle when rising above screen
+          if (b.y < -b.r * 2) {
+            bubbles[i] = createBubble(false);
+            continue;
+          }
+
+          const currentAlpha = b.alpha * (0.8 + 0.2 * Math.sin(b.shimmer));
+
+          ctx.save();
+
+          // 1. Translucent bubble sphere with iridescent gold/rose gradient
+          const grad = ctx.createRadialGradient(
+            b.x - b.r * 0.3,
+            b.y - b.r * 0.3,
+            b.r * 0.1,
+            b.x,
+            b.y,
+            b.r
+          );
+          grad.addColorStop(0, `rgba(255, 255, 255, ${currentAlpha * 0.45})`);
+          grad.addColorStop(0.65, `rgba(250, 240, 220, ${currentAlpha * 0.15})`);
+          grad.addColorStop(0.88, `rgba(212, 175, 55, ${currentAlpha * 0.55})`);
+          grad.addColorStop(1, `rgba(235, 175, 185, ${currentAlpha * 0.65})`);
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 2. Delicate iridescent rim
+          ctx.strokeStyle = `rgba(212, 175, 55, ${currentAlpha * 0.75})`;
+          ctx.lineWidth = Math.max(0.8, b.r * 0.05);
+          ctx.stroke();
+
+          // 3. 3D Specular highlight (top-left gleam)
+          ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha * 0.95})`;
+          ctx.beginPath();
+          ctx.arc(b.x - b.r * 0.36, b.y - b.r * 0.36, Math.max(1.2, b.r * 0.22), 0, Math.PI * 2);
+          ctx.fill();
+
+          // 4. Secondary gentle rim reflection (bottom-right)
+          ctx.fillStyle = `rgba(255, 245, 225, ${currentAlpha * 0.45})`;
+          ctx.beginPath();
+          ctx.arc(b.x + b.r * 0.32, b.y + b.r * 0.32, Math.max(0.8, b.r * 0.12), 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.restore();
+        }
+
+        requestAnimationFrame(renderBubbles);
+      }
+      requestAnimationFrame(renderBubbles);
+
+      // ── START SLIDESHOW ──
+      goToSlide(0);
+      play();
+      wakeControls();
+    </script>
+  </body>
+</html>
